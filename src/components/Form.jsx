@@ -43,7 +43,7 @@ const Form = () => {
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 4, mb: 4 }}>
-        <Typography variant="h4" gutterBottom>
+        <Typography variant="h4" gutterBottom style={{ textAlign: "center" }}>
           Job Form
         </Typography>
         <form onSubmit={handleSubmit}>
