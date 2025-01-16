@@ -1,21 +1,15 @@
 import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
 import { Logo, NavbarItems, NavbarButton } from "./navbarStyles";
-import { Link, useNavigate } from "react-router-dom";
-import { googleLogout } from "@react-oauth/google";
+import { Link } from "react-router-dom";
+import { useAuth } from "../../providers/AuthProvider";
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const { user, handleLogout } = useAuth();
   const navItems = [
     { title: "Job Board", link: "/job-board" },
     { title: "Overview", link: "/overview" },
   ];
-
-  const handleLogout = () => {
-    googleLogout();
-    navigate("/landing");
-    alert("Logged out!");
-  };
 
   return (
     <AppBar
@@ -50,8 +44,15 @@ const Navbar = () => {
               {item.title}
             </NavbarButton>
           ))}
-
-          <NavbarButton onClick={handleLogout}>Logout </NavbarButton>
+          {user ? (
+            <NavbarButton component={Link} to="/landing" onClick={handleLogout}>
+              Logout
+            </NavbarButton>
+          ) : (
+            <NavbarButton component={Link} to="/landing">
+              Login
+            </NavbarButton>
+          )}
         </NavbarItems>
       </Toolbar>
     </AppBar>

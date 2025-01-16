@@ -1,13 +1,13 @@
-import { GoogleLogin, googleLogout } from "@react-oauth/google";
+import React from "react";
+import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../providers/AuthProvider";
 
 const GoogleLoginAuth = () => {
+  const { setUser } = useAuth();
   const navigate = useNavigate();
 
-  function handleLogout() {
-    googleLogout();
-  }
   return (
     <>
       <GoogleLogin
@@ -15,8 +15,10 @@ const GoogleLoginAuth = () => {
         shape="pill"
         logo_alignment="center"
         onSuccess={(credentialResponse) => {
-          console.log(credentialResponse);
-          console.log(jwtDecode(credentialResponse.credential));
+          const decodedUser = jwtDecode(credentialResponse.credential);
+          console.log("Login Successful:", decodedUser);
+
+          setUser(decodedUser); // Set global user state
           navigate("/");
           alert("Logged in!");
         }}
