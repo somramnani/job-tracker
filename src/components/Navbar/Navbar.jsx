@@ -1,9 +1,11 @@
 import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
 import { Logo, NavbarItems, NavbarButton } from "./navbarStyles";
-import { Link } from "react-router-dom"; // Import Link from React Router
+import { Link } from "react-router-dom";
+import { useAuth } from "../../providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, handleLogout } = useAuth();
   const navItems = [
     { title: "Job Board", link: "/job-board" },
     { title: "Overview", link: "/overview" },
@@ -21,8 +23,8 @@ const Navbar = () => {
     >
       <Toolbar sx={{ paddingLeft: 0, paddingRight: 0, width: "100%" }}>
         <Logo
-          component={Link} // This makes the Logo behave like a link
-          to="/" // Link to the home page
+          component={Link}
+          to="/"
           sx={{
             fontFamily: "cursive",
             fontSize: "1.5rem",
@@ -36,13 +38,21 @@ const Navbar = () => {
           Job Tracker
         </Logo>
 
-        {/* Map through navItems to render the navbar items dynamically */}
         <NavbarItems>
           {navItems.map((item, index) => (
             <NavbarButton key={index} component={Link} to={item.link}>
               {item.title}
             </NavbarButton>
           ))}
+          {user ? (
+            <NavbarButton component={Link} to="/landing" onClick={handleLogout}>
+              Logout
+            </NavbarButton>
+          ) : (
+            <NavbarButton component={Link} to="/landing">
+              Login
+            </NavbarButton>
+          )}
         </NavbarItems>
       </Toolbar>
     </AppBar>

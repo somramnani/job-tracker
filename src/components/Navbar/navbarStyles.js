@@ -1,5 +1,5 @@
 import { styled } from "@mui/system";
-import { Typography, Button, Container } from "@mui/material";
+import { Button, Container } from "@mui/material";
 
 export const Logo = styled(Button)(({ theme }) => ({
   fontFamily: "cursive",
