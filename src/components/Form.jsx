@@ -38,6 +38,23 @@ const Form = () => {
     e.preventDefault();
     alert("Form submitted!");
     console.log("Form Submitted:", formData);
+
+    const url = process.env.REACT_APP_GOOGLE_SHEET_ID;
+    console.log(url);
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `Date=${formData.date.toLocaleDateString("en-US")}&Link=${
+        formData.url
+      }&Job=${formData.jobName}&Company=${formData.company}&Category=${
+        formData.category
+      }&Contact=${formData.pointOfContact}`,
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        alert(data);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
