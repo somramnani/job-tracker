@@ -18,10 +18,12 @@ const GoogleLoginAuth = () => {
           console.log(credentialResponse);
           console.log(jwtDecode(credentialResponse.credential));
           navigate("/");
+          alert("Logged in!");
         }}
         onError={() => {
           console.log("Login Failed");
         }}
+        auto_select={true}
       />
     </>
   );

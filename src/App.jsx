@@ -1,11 +1,8 @@
+import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
-import Home from "./pages/Home";
-import JobBoard from "./pages/JobBoard";
-import Overview from "./pages/Overview";
-import Landing from "./pages/Landing";
+import { Home, JobBoard, Overview, Landing } from "./pages/";
 
 function App() {
   const routes = [
