@@ -18,7 +18,7 @@ const GoogleLoginAuth = () => {
           const decodedUser = jwtDecode(credentialResponse.credential);
           console.log("Login Successful:", decodedUser);
 
-          setUser(decodedUser); // Set global user state
+          setUser(decodedUser);
           navigate("/");
           alert("Logged in!");
         }}
