@@ -8,8 +8,11 @@ import {
   Container,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useAuth } from "../providers/AuthProvider";
+import GoogleLoginAuth from "./GoogleLoginAuth";
 
 const Form = () => {
+  const { user } = useAuth();
   const [formData, setFormData] = useState({
     date: new Date(),
     url: "",
@@ -36,8 +39,27 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert("Form submitted!");
+
     console.log("Form Submitted:", formData);
+
+    const url = process.env.REACT_APP_GOOGLE_SHEET_ID;
+
+    fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `Date=${formData.date.toLocaleDateString("en-US")}&Link=${
+        formData.url
+      }&Job=${formData.jobName}&Company=${formData.company}&Category=${
+        formData.category
+      }&Contact=${formData.pointOfContact}`,
+    })
+      .then((res) => res.text())
+      .then((data) => {
+        alert(data);
+      })
+      .catch((error) => console.log(error));
+
+    alert("Form submitted!");
   };
 
   return (
@@ -93,9 +115,18 @@ const Form = () => {
               value={formData.pointOfContact}
               onChange={handleChange}
             />
-            <Button variant="contained" color="primary" type="submit" fullWidth>
-              Add to Job Board
-            </Button>
+            {user ? (
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                fullWidth
+              >
+                Add to Job Board
+              </Button>
+            ) : (
+              <GoogleLoginAuth />
+            )}
           </Stack>
         </form>
       </Box>
