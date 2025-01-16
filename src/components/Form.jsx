@@ -56,6 +56,15 @@ const Form = () => {
       .then((res) => res.text())
       .then((data) => {
         alert(data);
+
+        setFormData({
+          date: new Date(),
+          url: "",
+          jobName: "",
+          category: "",
+          company: "",
+          pointOfContact: "",
+        });
       })
       .catch((error) => console.log(error));
 
