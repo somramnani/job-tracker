@@ -42,8 +42,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Form Submitted:", formData);
-
     const url = process.env.REACT_APP_GOOGLE_SHEET_ID;
 
     fetch(url, {
@@ -69,8 +67,6 @@ const Form = () => {
         });
       })
       .catch((error) => console.log(error));
-
-    alert("Form submitted!");
   };
 
   const textFieldData = [
