@@ -10,7 +10,8 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth } from "../providers/AuthProvider";
 import GoogleLoginAuth from "./GoogleLoginAuth";
-import GoogleIcon from "@mui/icons-material/Google";
+import GoogleSheetsButton from "./GoogleSheetsButton";
+
 import AddIcon from "@mui/icons-material/Add";
 
 const Form = () => {
@@ -42,8 +43,6 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log("Form Submitted:", formData);
-
     const url = process.env.REACT_APP_GOOGLE_SHEET_ID;
 
     fetch(url, {
@@ -69,9 +68,20 @@ const Form = () => {
         });
       })
       .catch((error) => console.log(error));
-
-    alert("Form submitted!");
   };
+
+  const textFieldData = [
+    { label: "URL Link", name: "url", value: "", required: true },
+    { label: "Job Name", name: "jobName", value: "", required: true },
+    { label: "Company", name: "company", value: "", required: true },
+    { label: "Category", name: "category", value: "", required: true },
+    {
+      label: "Point of Contact (optional)",
+      name: "pointOfContact",
+      value: "",
+      required: false,
+    },
+  ];
 
   return (
     <Container maxWidth="sm">
@@ -87,45 +97,19 @@ const Form = () => {
               onChange={handleDateChange}
               renderInput={(params) => <TextField fullWidth {...params} />}
             />
-            <TextField
-              fullWidth
-              label="URL Link"
-              name="url"
-              value={formData.url}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Job Name"
-              name="jobName"
-              value={formData.jobName}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Category"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Point of Contact (optional)"
-              name="pointOfContact"
-              value={formData.pointOfContact}
-              onChange={handleChange}
-            />
+
+            {textFieldData.map((data, index) => (
+              <TextField
+                key={index}
+                fullWidth
+                label={data.label}
+                name={data.name}
+                value={formData[data.name]}
+                onChange={handleChange}
+                required={data.required}
+              />
+            ))}
+
             {user ? (
               <>
                 <Button
@@ -137,21 +121,7 @@ const Form = () => {
                 >
                   Add to Job Board
                 </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  startIcon={<GoogleIcon />}
-                  target="_blank"
-                  href={process.env.REACT_APP_GOOGLE_SHEET}
-                  fullWidth
-                  style={{
-                    backgroundColor: "#34A853",
-                    color: "#fff",
-                    textTransform: "none",
-                  }}
-                >
-                  GOOGLE SHEETS DOCUMENT
-                </Button>
+                <GoogleSheetsButton />
               </>
             ) : (
               <GoogleLoginAuth />
