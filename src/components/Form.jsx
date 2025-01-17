@@ -73,6 +73,19 @@ const Form = () => {
     alert("Form submitted!");
   };
 
+  const textFieldData = [
+    { label: "URL Link", name: "url", value: "", required: true },
+    { label: "Job Name", name: "jobName", value: "", required: true },
+    { label: "Company", name: "company", value: "", required: true },
+    { label: "Category", name: "category", value: "", required: true },
+    {
+      label: "Point of Contact (optional)",
+      name: "pointOfContact",
+      value: "",
+      required: false,
+    },
+  ];
+
   return (
     <Container maxWidth="sm">
       <Box sx={{ mt: 4, mb: 4 }}>
@@ -87,45 +100,19 @@ const Form = () => {
               onChange={handleDateChange}
               renderInput={(params) => <TextField fullWidth {...params} />}
             />
-            <TextField
-              fullWidth
-              label="URL Link"
-              name="url"
-              value={formData.url}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Job Name"
-              name="jobName"
-              value={formData.jobName}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Company"
-              name="company"
-              value={formData.company}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Category"
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-              required
-            />
-            <TextField
-              fullWidth
-              label="Point of Contact (optional)"
-              name="pointOfContact"
-              value={formData.pointOfContact}
-              onChange={handleChange}
-            />
+
+            {textFieldData.map((route, index) => (
+              <TextField
+                key={index}
+                fullWidth
+                label={route.label}
+                name={route.name}
+                value={formData[route.name]}
+                onChange={handleChange}
+                required={route.required}
+              />
+            ))}
+
             {user ? (
               <>
                 <Button
