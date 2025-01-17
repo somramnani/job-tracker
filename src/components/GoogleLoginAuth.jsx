@@ -20,7 +20,6 @@ const GoogleLoginAuth = () => {
 
           setUser(decodedUser);
           navigate("/");
-          alert("Logged in!");
         }}
         onError={() => {
           console.log("Login Failed");
