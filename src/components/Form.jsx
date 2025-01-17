@@ -10,6 +10,8 @@ import {
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth } from "../providers/AuthProvider";
 import GoogleLoginAuth from "./GoogleLoginAuth";
+import GoogleIcon from "@mui/icons-material/Google";
+import AddIcon from "@mui/icons-material/Add";
 
 const Form = () => {
   const { user } = useAuth();
@@ -125,14 +127,32 @@ const Form = () => {
               onChange={handleChange}
             />
             {user ? (
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                fullWidth
-              >
-                Add to Job Board
-              </Button>
+              <>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<AddIcon />}
+                  type="submit"
+                  fullWidth
+                >
+                  Add to Job Board
+                </Button>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  startIcon={<GoogleIcon />}
+                  target="_blank"
+                  href={process.env.REACT_APP_GOOGLE_SHEET}
+                  fullWidth
+                  style={{
+                    backgroundColor: "#34A853",
+                    color: "#fff",
+                    textTransform: "none",
+                  }}
+                >
+                  GOOGLE SHEETS DOCUMENT
+                </Button>
+              </>
             ) : (
               <GoogleLoginAuth />
             )}
