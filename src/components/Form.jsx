@@ -101,15 +101,15 @@ const Form = () => {
               renderInput={(params) => <TextField fullWidth {...params} />}
             />
 
-            {textFieldData.map((route, index) => (
+            {textFieldData.map((data, index) => (
               <TextField
                 key={index}
                 fullWidth
-                label={route.label}
-                name={route.name}
-                value={formData[route.name]}
+                label={data.label}
+                name={data.name}
+                value={formData[data.name]}
                 onChange={handleChange}
-                required={route.required}
+                required={data.required}
               />
             ))}
 
