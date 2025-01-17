@@ -150,7 +150,7 @@ const Form = () => {
                     textTransform: "none",
                   }}
                 >
-                  GO TO GOOGLE SHEETS
+                  GOOGLE SHEETS DOCUMENT
                 </Button>
               </>
             ) : (
