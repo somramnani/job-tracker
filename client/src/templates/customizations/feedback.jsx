@@ -1,5 +1,5 @@
 import { alpha } from "@mui/material/styles";
-import { gray, orange } from "../../templates/shared-theme/themePrimitives";
+import { gray, orange } from "../shared-theme/themePrimitives";
 
 export const feedbackCustomizations = {
   MuiAlert: {
