@@ -19,7 +19,7 @@ const GoogleLoginAuth = () => {
           console.log("Login Successful:", decodedUser);
 
           setUser(decodedUser);
-          navigate("/");
+          navigate("/job-board");
         }}
         onError={() => {
           console.log("Login Failed");
