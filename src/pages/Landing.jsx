@@ -1,11 +1,9 @@
-import GoogleLoginButton from "../components/GoogleLoginAuth";
+import SignIn from "../components/SignIn/SignIn";
 
 const Landing = () => {
   return (
     <div>
-      This is Landing Page/Login page. Users will be able to login and there
-      will be an about section
-      <GoogleLoginButton />
+      <SignIn />
     </div>
   );
 };
