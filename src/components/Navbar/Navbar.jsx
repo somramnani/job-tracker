@@ -45,11 +45,11 @@ const Navbar = () => {
             </NavbarButton>
           ))}
           {user ? (
-            <NavbarButton component={Link} to="/landing" onClick={handleLogout}>
+            <NavbarButton component={Link} to="/" onClick={handleLogout}>
               Logout
             </NavbarButton>
           ) : (
-            <NavbarButton component={Link} to="/landing">
+            <NavbarButton component={Link} to="/">
               Login
             </NavbarButton>
           )}

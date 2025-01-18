@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import { googleLogout } from "@react-oauth/google";
 
 const AuthContext = createContext();
@@ -6,16 +6,26 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+
   const handleLogout = () => {
     googleLogout();
     setUser(null);
+  };
 
-    alert("Logged out!");
+  const updateUser = (userData) => {
+    setUser(userData);
+    localStorage.setItem("user", JSON.stringify(userData));
   };
 
   const contextValue = {
     user,
-    setUser,
+    setUser: updateUser,
     handleLogout,
   };
 

@@ -1,4 +1,20 @@
+import { useAuth } from "../providers/AuthProvider";
+import Form from "../components/Form";
+
 const JobBoard = () => {
-  return <div>Job Board Page (currently under construction)</div>;
+  const { user } = useAuth();
+  return (
+    <div>
+      <div style={{ textAlign: "center" }}>
+        {user ? (
+          <h1>Welcome {user.given_name} to your Job Board!</h1>
+        ) : (
+          <h1>Welcome to your Job Board!</h1>
+        )}
+
+        <Form />
+      </div>
+    </div>
+  );
 };
 export default JobBoard;

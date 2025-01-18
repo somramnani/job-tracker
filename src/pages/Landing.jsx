@@ -1,11 +1,5 @@
-import SignIn from "../components/SignIn/SignIn";
-
 const Landing = () => {
-  return (
-    <div>
-      <SignIn />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Landing;
