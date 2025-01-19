@@ -1,11 +1,11 @@
 import SignIn from "../components/SignIn/SignIn";
+import JobBoard from "./JobBoard";
+
+import { useAuth } from "../providers/AuthProvider";
 
 const Home = () => {
-  return (
-    <div>
-      <SignIn />
-    </div>
-  );
+  const { user } = useAuth();
+  return <div>{user ? <JobBoard /> : <SignIn />}</div>;
 };
 
 export default Home;
