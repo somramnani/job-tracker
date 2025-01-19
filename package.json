@@ -5,10 +5,16 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "start-frontend": "npm run start --prefix client",
-    "dev": "npm run start-frontend",
+    "client": "npm run start --prefix client",
+    "server": "npm run start --prefix server",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "install": "^0.13.0",
+    "npm": "^11.0.0"
+  }
 }
