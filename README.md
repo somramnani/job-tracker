@@ -1,6 +1,6 @@
 # Job Tracker
 
-![Brand Logo](client/public/BrandLogo.png)
+![Brand Logo](client/public/BrandLogo.png | width=100))
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
