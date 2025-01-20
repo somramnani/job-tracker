@@ -32,6 +32,7 @@ const Form = () => {
   const [companyNotFound, setCompanyNotFound] = useState(false);
   const [jobNameNotFound, setJobNameNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loadingCategory, setLoadingCategory] = useState(false);
 
   const serverURL = process.env.REACT_APP_SERVER_URL;
   const scrapeAPIUrl = `${serverURL}/scrape`;
@@ -48,7 +49,7 @@ const Form = () => {
             jobName: response.data.jobTitle || "",
             company: response.data.companyName || "",
           }));
-
+          determineCategory(response.data.jobTitle);
           setCompanyNotFound(!response.data.companyName);
           setJobNameNotFound(!response.data.jobTitle);
         }
@@ -61,6 +62,33 @@ const Form = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+
+  const determineCategory = (inputValue) => {
+    setLoadingCategory(true);
+
+    const categoryKeywords = {
+      CS: ["software engineer", "qa", "developer"],
+      IT: ["help desk"],
+      Food: ["cook", "chef", "dishwasher"],
+    };
+
+    const lowerCaseInput = inputValue.toLowerCase();
+
+    let matchedCategory = "";
+    for (const [category, keywords] of Object.entries(categoryKeywords)) {
+      if (keywords.some((keyword) => lowerCaseInput.includes(keyword))) {
+        matchedCategory = category;
+        break;
+      }
+    }
+
+    setFormData((prev) => ({
+      ...prev,
+      category: matchedCategory,
+    }));
+
+    setLoadingCategory(false);
   };
 
   const handleChange = (e) => {
@@ -81,6 +109,7 @@ const Form = () => {
 
     if (name === "jobName" && value.trim() !== "") {
       setJobNameNotFound(false);
+      determineCategory(value);
     }
   };
 
@@ -182,8 +211,10 @@ const Form = () => {
                   </IconButton>
                 )}
 
-                {(data.name === "jobName" || data.name === "company") &&
-                  loading && (
+                {(data.name === "jobName" ||
+                  data.name === "company" ||
+                  data.name === "category") &&
+                  (loading || loadingCategory) && (
                     <Box
                       sx={{
                         position: "absolute",
@@ -196,7 +227,6 @@ const Form = () => {
                       <CircularProgress size={24} />
                     </Box>
                   )}
-
                 <ErrorMessage
                   fieldName="Company"
                   isFieldNotFound={companyNotFound && data.name === "company"}
