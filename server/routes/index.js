@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const scrapeRoute = require("./api/scrape/scrape");
 
 router.get("/", (req, res) => {
   res.json({
@@ -8,5 +9,7 @@ router.get("/", (req, res) => {
     author: "Som Ramnani",
   });
 });
+
+router.use("/api/scrape", scrapeRoute);
 
 module.exports = router;

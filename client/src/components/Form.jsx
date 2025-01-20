@@ -4,8 +4,9 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth } from "../providers/AuthProvider";
 import GoogleLoginAuth from "./GoogleLoginAuth";
 import GoogleSheetsButton from "./GoogleSheetsButton";
-
 import AddIcon from "@mui/icons-material/Add";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import axios from "axios";
 
 const Form = () => {
   const { user } = useAuth();
@@ -18,12 +19,36 @@ const Form = () => {
     pointOfContact: "",
   });
 
+  const getScrapedData = async (url) => {
+    axios({
+      method: "get",
+      url: `http://localhost:4000/api/scrape/${encodeURIComponent(url)}`,
+    })
+      .then(function (response) {
+        if (response) {
+          setFormData((prev) => ({
+            ...prev,
+            jobName: response.data.jobTitle,
+            company: response.data.companyName,
+          }));
+        } else console.error("Error from server:", response.error);
+      })
+      .catch(function (error) {
+        console.error("Failed to fetch:", error.message);
+      });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }));
+
+    if (name === "url") {
+      getScrapedData(value);
+    }
   };
 
   const handleDateChange = (newDate) => {
@@ -33,12 +58,22 @@ const Form = () => {
     }));
   };
 
+  const clearForm = () => {
+    setFormData({
+      date: new Date(),
+      url: "",
+      jobName: "",
+      category: "",
+      company: "",
+      pointOfContact: "",
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const googleSheetsIdURL = process.env.REACT_APP_GOOGLE_SHEET_ID;
 
-    const url = process.env.REACT_APP_GOOGLE_SHEET_ID;
-
-    fetch(url, {
+    fetch(googleSheetsIdURL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `Date=${formData.date.toLocaleDateString("en-US")}&Link=${
@@ -51,14 +86,7 @@ const Form = () => {
       .then((data) => {
         alert(data);
 
-        setFormData({
-          date: new Date(),
-          url: "",
-          jobName: "",
-          category: "",
-          company: "",
-          pointOfContact: "",
-        });
+        clearForm();
       })
       .catch((error) => console.log(error));
   };
@@ -110,6 +138,19 @@ const Form = () => {
                   fullWidth
                 >
                   Add to Job Board
+                </Button>
+
+                <Button
+                  variant="contained"
+                  onClick={clearForm}
+                  style={{
+                    backgroundColor: "red",
+                  }}
+                  startIcon={<RemoveCircleOutlineIcon />}
+                  type="submit"
+                  fullWidth
+                >
+                  Clear Form
                 </Button>
                 <GoogleSheetsButton />
               </>
