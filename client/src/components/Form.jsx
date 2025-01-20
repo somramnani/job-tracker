@@ -20,7 +20,7 @@ const Form = () => {
     pointOfContact: "",
   });
   const [companyNotFound, setCompanyNotFound] = useState(false);
-  const [jobNameNotFound, setjobNameNotFound] = useState(false);
+  const [jobNameNotFound, setJobNameNotFound] = useState(false);
 
   const getScrapedData = async (url) => {
     try {
@@ -35,12 +35,12 @@ const Form = () => {
         }));
 
         setCompanyNotFound(!response.data.companyName);
-        setjobNameNotFound(!response.data.jobTitle);
+        setJobNameNotFound(!response.data.jobTitle);
       }
     } catch (error) {
       console.error("Failed to fetch:", error.message);
       setCompanyNotFound(true);
-      setjobNameNotFound(true);
+      setJobNameNotFound(true);
     }
   };
 
@@ -62,7 +62,7 @@ const Form = () => {
     }
 
     if (name === "jobName" && value.trim() !== "") {
-      setjobNameNotFound(false);
+      setJobNameNotFound(false);
     }
   };
 
@@ -83,7 +83,7 @@ const Form = () => {
       pointOfContact: "",
     });
     setCompanyNotFound(false);
-    setjobNameNotFound(false);
+    setJobNameNotFound(false);
   };
 
   const handleSubmit = (e) => {
