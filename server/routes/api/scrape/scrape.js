@@ -32,7 +32,7 @@ router.get("/*", async (req, res) => {
     res.json({
       message: "Scraped successfully",
       urlToScrape: url,
-      jobTitle: jobTitle || "Job title not found",
+      jobTitle: jobTitle,
       companyName: companyName,
     });
   } catch (error) {
