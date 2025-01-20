@@ -16,7 +16,6 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
-import ClearIcon from "@mui/icons-material/Clear";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const Form = () => {
