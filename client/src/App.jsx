@@ -2,13 +2,22 @@ import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
+import TitleWrapper from "./components/TitleWrapper";
 import { Home, JobBoard, Overview } from "./pages/";
 
 function App() {
   const routes = [
-    { path: "/", element: <Home /> },
-    { path: "/job-board", element: <JobBoard /> },
-    { path: "/overview", element: <Overview /> },
+    { path: "/", element: <Home />, title: "Job Tracker" },
+    {
+      path: "/job-board",
+      element: <JobBoard />,
+      title: "Job Board | Job Tracker",
+    },
+    {
+      path: "/overview",
+      element: <Overview />,
+      title: "Overview | Job Tracker",
+    },
   ];
 
   return (
@@ -19,7 +28,15 @@ function App() {
           <Routes>
             {routes.map((route, index) => {
               return (
-                <Route key={index} path={route.path} element={route.element} />
+                <Route
+                  key={index}
+                  path={route.path}
+                  element={
+                    <TitleWrapper title={route.title}>
+                      {route.element}
+                    </TitleWrapper>
+                  }
+                />
               );
             })}
           </Routes>
