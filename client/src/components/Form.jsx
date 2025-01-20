@@ -5,6 +5,7 @@ import { useAuth } from "../providers/AuthProvider";
 import GoogleLoginAuth from "./GoogleLoginAuth";
 import GoogleSheetsButton from "./GoogleSheetsButton";
 import AddIcon from "@mui/icons-material/Add";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import axios from "axios";
 
 const Form = () => {
@@ -18,7 +19,6 @@ const Form = () => {
     pointOfContact: "",
   });
 
-
   const getScrapedData = async (url) => {
     axios({
       method: "get",
@@ -29,6 +29,7 @@ const Form = () => {
           setFormData((prev) => ({
             ...prev,
             jobName: response.data.jobTitle,
+            company: response.data.companyName,
           }));
         } else console.error("Error from server:", response.error);
       })
@@ -57,6 +58,17 @@ const Form = () => {
     }));
   };
 
+  const clearForm = () => {
+    setFormData({
+      date: new Date(),
+      url: "",
+      jobName: "",
+      category: "",
+      company: "",
+      pointOfContact: "",
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const googleSheetsIdURL = process.env.REACT_APP_GOOGLE_SHEET_ID;
@@ -74,14 +86,7 @@ const Form = () => {
       .then((data) => {
         alert(data);
 
-        setFormData({
-          date: new Date(),
-          url: "",
-          jobName: "",
-          category: "",
-          company: "",
-          pointOfContact: "",
-        });
+        clearForm();
       })
       .catch((error) => console.log(error));
   };
@@ -133,6 +138,19 @@ const Form = () => {
                   fullWidth
                 >
                   Add to Job Board
+                </Button>
+
+                <Button
+                  variant="contained"
+                  onClick={clearForm}
+                  style={{
+                    backgroundColor: "red",
+                  }}
+                  startIcon={<RemoveCircleOutlineIcon />}
+                  type="submit"
+                  fullWidth
+                >
+                  Clear Form
                 </Button>
                 <GoogleSheetsButton />
               </>
