@@ -6,6 +6,7 @@ import {
   Box,
   Container,
   CircularProgress,
+  IconButton,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth } from "../providers/AuthProvider";
@@ -15,6 +16,7 @@ import AddIcon from "@mui/icons-material/Add";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const Form = () => {
   const { user } = useAuth();
@@ -102,6 +104,13 @@ const Form = () => {
     setJobNameNotFound(false);
   };
 
+  const clearInput = (input) => {
+    setFormData((prev) => ({
+      ...prev,
+      [input]: "",
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const googleSheetsIdURL = process.env.REACT_APP_GOOGLE_SHEET_ID;
@@ -159,6 +168,20 @@ const Form = () => {
                   required={data.required}
                 />
 
+                {formData[data.name] && (
+                  <IconButton
+                    sx={{
+                      position: "absolute",
+                      right: 10,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                    }}
+                    onClick={() => clearInput(data.name)}
+                  >
+                    <HighlightOffIcon />
+                  </IconButton>
+                )}
+
                 {(data.name === "jobName" || data.name === "company") &&
                   loading && (
                     <Box
@@ -167,6 +190,7 @@ const Form = () => {
                         right: 10,
                         top: "50%",
                         transform: "translateY(-50%)",
+                        zIndex: 1,
                       }}
                     >
                       <CircularProgress size={24} />
