@@ -19,21 +19,21 @@ router.get("/*", async (req, res) => {
     const $ = cheerio.load(response.data);
 
     const jobTitle =
-      $("meta[property='og:title']").attr("content") || // Open Graph
-      $("span[itemprop='title']").text().trim() || // Schema.org
-      $("div.job-title").text().trim(); // Fallback for custom divs
+      $("meta[property='og:title']").attr("content") ||
+      $("span[itemprop='title']").text().trim() ||
+      $("div.job-title").text().trim();
 
     const companyName =
-      $("meta[property='og:site_name']").attr("content") || // Open Graph site name
-      $("span[itemprop='hiringOrganization']").text().trim() || // Schema.org
-      $("div.company-name").text().trim() || // Fallback for custom divs
-      $("a.employer-name").text().trim(); // Another common structure
+      $("meta[property='og:site_name']").attr("content") ||
+      $("span[itemprop='hiringOrganization']").text().trim() ||
+      $("div.company-name").text().trim() ||
+      $("a.employer-name").text().trim();
 
     res.json({
       message: "Scraped successfully",
       urlToScrape: url,
       jobTitle: jobTitle || "Job title not found",
-      companyName: companyName || "Company name not found",
+      companyName: companyName,
     });
   } catch (error) {
     console.error("Error scraping:", error.message);
