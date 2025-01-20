@@ -5,7 +5,7 @@ const routes = require("./routes");
 const app = express();
 
 const corsOptions = {
-  orgin: "*",
+  origin: "*",
   credientals: true,
   optionSucessRate: 200,
 };
