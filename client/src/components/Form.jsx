@@ -40,8 +40,6 @@ const Form = () => {
     axios
       .get(`${scrapeAPIUrl}/${url}`)
       .then((response) => {
-        console.log("Response from API:", response.data);
-
         if (response.data) {
           setFormData((prev) => ({
             ...prev,
