@@ -1,5 +1,12 @@
 import { useState } from "react";
-import { TextField, Button, Stack, Box, Container } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Stack,
+  Box,
+  Container,
+  CircularProgress,
+} from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth } from "../providers/AuthProvider";
 import GoogleLoginAuth from "./GoogleLoginAuth";
@@ -19,30 +26,39 @@ const Form = () => {
     company: "",
     pointOfContact: "",
   });
+
   const [companyNotFound, setCompanyNotFound] = useState(false);
   const [jobNameNotFound, setJobNameNotFound] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const serverURL = process.env.REACT_APP_SERVER_URL;
   const scrapeAPIUrl = `${serverURL}/scrape`;
 
-  const getScrapedData = async (url) => {
-    try {
-      const response = await axios.get(`${scrapeAPIUrl}/${url}`);
-      if (response.data) {
-        setFormData((prev) => ({
-          ...prev,
-          jobName: response.data.jobTitle || "",
-          company: response.data.companyName || "",
-        }));
+  const getScrapedData = (url) => {
+    setLoading(true);
 
-        setCompanyNotFound(!response.data.companyName);
-        setJobNameNotFound(!response.data.jobTitle);
-      }
-    } catch (error) {
-      console.error("Failed to fetch:", error.message);
-      setCompanyNotFound(true);
-      setJobNameNotFound(true);
-    }
+    axios
+      .get(`${scrapeAPIUrl}/${url}`)
+      .then((response) => {
+        if (response.data) {
+          setFormData((prev) => ({
+            ...prev,
+            jobName: response.data.jobTitle || "",
+            company: response.data.companyName || "",
+          }));
+
+          setCompanyNotFound(!response.data.companyName);
+          setJobNameNotFound(!response.data.jobTitle);
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to fetch:", error.message);
+        setCompanyNotFound(true);
+        setJobNameNotFound(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   };
 
   const handleChange = (e) => {
@@ -142,6 +158,21 @@ const Form = () => {
                   onChange={handleChange}
                   required={data.required}
                 />
+
+                {(data.name === "jobName" || data.name === "company") &&
+                  loading && (
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        right: 10,
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                      }}
+                    >
+                      <CircularProgress size={24} />
+                    </Box>
+                  )}
+
                 <ErrorMessage
                   fieldName="Company"
                   isFieldNotFound={companyNotFound && data.name === "company"}
