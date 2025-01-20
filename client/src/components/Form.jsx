@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { TextField, Button, Stack, Box, Container } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth } from "../providers/AuthProvider";
@@ -7,6 +7,7 @@ import GoogleSheetsButton from "./GoogleSheetsButton";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import axios from "axios";
+import ErrorMessage from "./ErrorMessage";
 
 const Form = () => {
   const { user } = useAuth();
@@ -18,28 +19,34 @@ const Form = () => {
     company: "",
     pointOfContact: "",
   });
+  const [companyNotFound, setCompanyNotFound] = useState(false);
+  const [jobNameNotFound, setJobNameNotFound] = useState(false);
 
   const getScrapedData = async (url) => {
-    axios({
-      method: "get",
-      url: `http://localhost:4000/api/scrape/${encodeURIComponent(url)}`,
-    })
-      .then(function (response) {
-        if (response) {
-          setFormData((prev) => ({
-            ...prev,
-            jobName: response.data.jobTitle,
-            company: response.data.companyName,
-          }));
-        } else console.error("Error from server:", response.error);
-      })
-      .catch(function (error) {
-        console.error("Failed to fetch:", error.message);
-      });
+    try {
+      const response = await axios.get(
+        `http://localhost:4000/api/scrape/${encodeURIComponent(url)}`
+      );
+      if (response.data) {
+        setFormData((prev) => ({
+          ...prev,
+          jobName: response.data.jobTitle || "",
+          company: response.data.companyName || "",
+        }));
+
+        setCompanyNotFound(!response.data.companyName);
+        setJobNameNotFound(!response.data.jobTitle);
+      }
+    } catch (error) {
+      console.error("Failed to fetch:", error.message);
+      setCompanyNotFound(true);
+      setJobNameNotFound(true);
+    }
   };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    console.log(e.target.value);
 
     setFormData((prev) => ({
       ...prev,
@@ -48,6 +55,14 @@ const Form = () => {
 
     if (name === "url") {
       getScrapedData(value);
+    }
+
+    if (name === "company" && value.trim() !== "") {
+      setCompanyNotFound(false);
+    }
+
+    if (name === "jobName" && value.trim() !== "") {
+      setJobNameNotFound(false);
     }
   };
 
@@ -67,6 +82,8 @@ const Form = () => {
       company: "",
       pointOfContact: "",
     });
+    setCompanyNotFound(false);
+    setJobNameNotFound(false);
   };
 
   const handleSubmit = (e) => {
@@ -117,15 +134,24 @@ const Form = () => {
             />
 
             {textFieldData.map((data, index) => (
-              <TextField
-                key={index}
-                fullWidth
-                label={data.label}
-                name={data.name}
-                value={formData[data.name]}
-                onChange={handleChange}
-                required={data.required}
-              />
+              <Box key={index} sx={{ position: "relative" }}>
+                <TextField
+                  fullWidth
+                  label={data.label}
+                  name={data.name}
+                  value={formData[data.name]}
+                  onChange={handleChange}
+                  required={data.required}
+                />
+                <ErrorMessage
+                  fieldName="Company"
+                  isFieldNotFound={companyNotFound && data.name === "company"}
+                />
+                <ErrorMessage
+                  fieldName="Job Title"
+                  isFieldNotFound={jobNameNotFound && data.name === "jobName"}
+                />
+              </Box>
             ))}
 
             {user ? (
@@ -150,7 +176,7 @@ const Form = () => {
                   type="submit"
                   fullWidth
                 >
-                  Clear Form
+                  Reset Form
                 </Button>
                 <GoogleSheetsButton />
               </>
