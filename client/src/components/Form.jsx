@@ -22,11 +22,12 @@ const Form = () => {
   const [companyNotFound, setCompanyNotFound] = useState(false);
   const [jobNameNotFound, setJobNameNotFound] = useState(false);
 
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+  const scrapeAPIUrl = `${serverURL}/scrape`;
+
   const getScrapedData = async (url) => {
     try {
-      const response = await axios.get(
-        `http://localhost:4000/api/scrape/${encodeURIComponent(url)}`
-      );
+      const response = await axios.get(`${scrapeAPIUrl}/${url}`);
       if (response.data) {
         setFormData((prev) => ({
           ...prev,
@@ -102,7 +103,6 @@ const Form = () => {
       .then((res) => res.text())
       .then((data) => {
         alert(data);
-
         clearForm();
       })
       .catch((error) => console.log(error));
