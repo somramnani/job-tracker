@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const scrapeRoute = require("./api/scrape");
+const scrapeRoute = require("./api/scrape/scrape");
 
 router.get("/", (req, res) => {
   res.json({
