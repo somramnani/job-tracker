@@ -74,8 +74,8 @@ const Form = () => {
     };
 
     const lowerCaseInput = inputValue.toLowerCase();
-
     let matchedCategory = "";
+
     for (const [category, keywords] of Object.entries(categoryKeywords)) {
       if (keywords.some((keyword) => lowerCaseInput.includes(keyword))) {
         matchedCategory = category;
