@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   TextField,
-  Button,
   Stack,
   Box,
   Container,
@@ -17,6 +16,7 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import axios from "axios";
 import ErrorMessage from "./ErrorMessage";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import FormButton from "./FormButton";
 
 const Form = () => {
   const { user } = useAuth();
@@ -33,6 +33,7 @@ const Form = () => {
   const [jobNameNotFound, setJobNameNotFound] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingCategory, setLoadingCategory] = useState(false);
+  const [isLoadingSubmit, setLoadingSubmit] = useState(false);
 
   const serverURL = process.env.REACT_APP_SERVER_URL;
   const scrapeAPIUrl = `${serverURL}/scrape`;
@@ -68,7 +69,7 @@ const Form = () => {
     setLoadingCategory(true);
 
     const categoryKeywords = {
-      CS: ["software engineer", "qa", "developer"],
+      CS: ["software engineer", "qa", "developer", "tester"],
       IT: ["help desk"],
       Food: ["cook", "chef", "dishwasher"],
     };
@@ -142,6 +143,8 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoadingSubmit(true);
+
     const googleSheetsIdURL = process.env.REACT_APP_GOOGLE_SHEET_ID;
 
     fetch(googleSheetsIdURL, {
@@ -158,7 +161,10 @@ const Form = () => {
         alert(data);
         clearForm();
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(error))
+      .finally(() => {
+        setLoadingSubmit(false);
+      });
   };
 
   const textFieldData = [
@@ -240,28 +246,18 @@ const Form = () => {
 
             {user ? (
               <>
-                <Button
-                  variant="contained"
+                <FormButton
+                  message="Add to Job Board"
+                  icon={<AddIcon />}
+                  isLoadingSubmit={isLoadingSubmit}
                   color="primary"
-                  startIcon={<AddIcon />}
-                  type="submit"
-                  fullWidth
-                >
-                  Add to Job Board
-                </Button>
-
-                <Button
-                  variant="contained"
-                  onClick={clearForm}
-                  style={{
-                    backgroundColor: "red",
-                  }}
-                  startIcon={<RemoveCircleOutlineIcon />}
-                  type="submit"
-                  fullWidth
-                >
-                  Reset Form
-                </Button>
+                />
+                <FormButton
+                  message="Clear Form"
+                  icon={<RemoveCircleOutlineIcon />}
+                  onClick={() => clearInput()}
+                  color="secondary"
+                />
                 <GoogleSheetsButton />
               </>
             ) : (
