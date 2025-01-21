@@ -12,12 +12,14 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-const port = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use("/", routes);
 
-app.listen(port, () => {
-  console.log(`Server ready on port ${port}`);
-});
+if (process.env.NODE_ENV !== "test") {
+  app.listen(PORT, () => {
+    console.log(`Server ready on port ${PORT}.`);
+  });
+}
 
 module.exports = app;
