@@ -1,0 +1,10 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+    patch:
+      target: auto
+  flags:
+    - server
+    - client
