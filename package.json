@@ -6,12 +6,13 @@
   "scripts": {
     "start": "npm run dev",
     "build": "npm run client-build",
-    "test": "npm run server-test --coverage ",
+    "test": "npm run server-test && npm run client-test --coverage ",
     "coverage:upload": "codecov",
     "client": "npm run start --prefix client",
     "client-build": "npm run build --prefix client",
     "server": "npm run start --prefix server",
     "server-test": "npm run test --prefix server",
+    "client-test": "npm run test --prefix client",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "",

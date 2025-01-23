@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { Navbar, TitleWrapper } from "./components/";
 import { Home, JobBoard, Overview } from "./pages/";
 

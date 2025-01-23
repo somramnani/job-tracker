@@ -1,6 +1,8 @@
 module.exports = {
-  moduleNameMapper: {
-    "^react-router-dom$": "<rootDir>/node_modules/react-router-dom",
-  },
+  moduleNameMapper: { "^axios$": "axios/dist/node/axios.cjs" },
   testEnvironment: "jsdom",
+  collectCoverage: true,
+  coverageDirectory: "./coverage",
+  coverageReporters: ["json", "lcov", "text"],
+  setupFilesAfterEnv: ["./setupTest.js"],
 };
