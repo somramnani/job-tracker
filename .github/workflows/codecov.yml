@@ -25,7 +25,7 @@ jobs:
         run: npm install --prefix server
 
       - name: Install Client Dependencies
-        run: npm install --prefix clienta
+        run: npm install --prefix client
 
       - name: Run tests with coverage
         run: npm test
