@@ -1,4 +1,4 @@
-name: Build React App
+name: Run Test and Upload Coverage
 
 on:
   push:
@@ -27,7 +27,10 @@ jobs:
       - name: Install Client Dependencies
         run: npm install --prefix clienta
 
-      - name: Building
-        run: npm run build
-        env:
-          CI: false
+      - name: Run tests with coverage
+        run: npm test
+
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
