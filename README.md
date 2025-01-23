@@ -1,5 +1,7 @@
 ![Brand Logo](client/public/BrandLogo.png)
 
+[![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker)
+
 ## Available Scripts
 
 In the project directory, you can run:

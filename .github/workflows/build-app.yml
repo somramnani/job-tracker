@@ -1,0 +1,33 @@
+name: Build React App
+
+on:
+  push:
+    branches:
+      - main
+      - setup/codecov
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Server Dependencies
+        run: npm install --prefix server
+
+      - name: Install Client Dependencies
+        run: npm install --prefix client
+
+      - name: Building
+        run: npm run build
+        env:
+          CI: false

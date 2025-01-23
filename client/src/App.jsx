@@ -20,7 +20,7 @@ function App() {
   ];
 
   return (
-    <>
+    <div data-testid="app">
       <Router>
         <div className="App">
           <Navbar />
@@ -41,7 +41,7 @@ function App() {
           </Routes>
         </div>
       </Router>
-    </>
+    </div>
   );
 }
 

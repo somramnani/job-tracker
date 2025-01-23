@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/main.b37c194e.css","mappings":"AAAA,KACE,gBACF,CAEA,QAEE,eAAgB,CADhB,iBAEF","sources":["App.css"],"sourcesContent":[".App {\n  padding-top: 64px; \n}\n\n.header {\n  text-align: center;\n  margin-top: 20px;\n}\n"],"names":[],"sourceRoot":""}
