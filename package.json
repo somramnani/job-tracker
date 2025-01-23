@@ -31,5 +31,8 @@
       "lcov",
       "text"
     ]
+  },
+  "dependencies": {
+    "codecov": "^3.8.3"
   }
 }
