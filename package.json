@@ -12,6 +12,7 @@
     "client-build": "npm run build --prefix client",
     "server": "npm run start --prefix server",
     "server-test": "npm run test --prefix server",
+    "client-test": "npm run test --prefix client",
     "dev": "concurrently \"npm run client\" \"npm run server\""
   },
   "author": "",
