@@ -1,10 +1,6 @@
 name: Run Test and Upload Coverage
 
-on:
-  push:
-    branches:
-      - main
-      - setup/codecov
+on: [push, pull_request]
 
 jobs:
   build:
