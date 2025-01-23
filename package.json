@@ -6,7 +6,8 @@
   "scripts": {
     "start": "npm run dev",
     "build": "npm run client-build",
-    "test": "npm run server-test --coverage",
+    "test": "npm run server-test --coverage ",
+    "coverage:upload": "codecov",
     "client": "npm run start --prefix client",
     "client-build": "npm run build --prefix client",
     "server": "npm run start --prefix server",
