@@ -23,6 +23,8 @@
   },
   "jest": {
     "collectCoverage": true,
+    "testEnvironment": "node",
+    "coverageDirectory": "./coverage",
     "coverageReporters": [
       "json",
       "lcov",
