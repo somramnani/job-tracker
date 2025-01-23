@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
-import GoogleIcon from "@mui/icons-material/Google";
+
+import { GoogleIcon } from "./Icons/CustomIcons";
 
 const GoogleSheetsButton = () => {
   return (
@@ -11,7 +12,7 @@ const GoogleSheetsButton = () => {
       href={process.env.REACT_APP_GOOGLE_SHEET}
       fullWidth
       style={{
-        backgroundColor: "#34A853",
+        backgroundColor: "#6dc00b",
         color: "#fff",
         textTransform: "none",
       }}

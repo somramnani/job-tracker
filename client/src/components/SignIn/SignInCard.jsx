@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import ForgotPassword from "./ForgotPassword";
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from "./CustomIcons";
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from "../Icons/CustomIcons";
 import GoogleLoginAuth from "../GoogleLoginAuth";
 import { Logo } from "../Navbar/navbarStyles";
 
