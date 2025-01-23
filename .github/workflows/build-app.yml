@@ -22,5 +22,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
+      - name: Install Server Dependencies
+        run: npm install --prefix server
+
+      - name: Install Client Dependencies
+        run: npm install --prefix client
+
       - name: Building
         run: npm run build
