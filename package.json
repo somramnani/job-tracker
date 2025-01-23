@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run dev",
     "build": "npm run client-build",
-    "test": "npm run server-test",
+    "test": "npm run server-test --coverage",
     "client": "npm run start --prefix client",
     "client-build": "npm run build --prefix client",
     "server": "npm run start --prefix server",
@@ -20,5 +20,13 @@
     "install": "^0.13.0",
     "jest": "^29.7.0",
     "npm": "^11.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "coverageReporters": [
+      "json",
+      "lcov",
+      "text"
+    ]
   }
 }
