@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import Navbar from "../../components/Navbar/Navbar";
 import { MemoryRouter } from "react-router";
 
-jest.mock("../../providers/AuthProvider", () => ({
+jest.mock("../../hooks", () => ({
   useAuth: jest.fn(() => ({
     useAuth: jest.fn(),
   })),
@@ -11,7 +11,7 @@ jest.mock("../../providers/AuthProvider", () => ({
 
 describe("Navbar", () => {
   it("renders the Navbar", () => {
-    jest.mock("../../providers/AuthProvider", () => ({
+    jest.mock("../../hooks", () => ({
       useAuth: jest.fn(() => ({
         user: null,
         handleLogout: jest.fn(),
@@ -29,7 +29,7 @@ describe("Navbar", () => {
 
   it("renders Logout button when a user is logged in", () => {
     const mockUser = { id: "1", name: "Som", email: "test@gmail.com" };
-    require("../../providers/AuthProvider").useAuth.mockReturnValue({
+    require("../../hooks").useAuth.mockReturnValue({
       user: mockUser,
       handleLogout: jest.fn(),
     });
