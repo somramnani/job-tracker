@@ -1,5 +1,5 @@
-import { useAuth } from "../hooks";
-import { Form, PositionedSnackbar } from "../components";
+import { useAuth } from "../../hooks";
+import { Form, PositionedSnackbar } from "../../components";
 
 const JobBoard = () => {
   const { user } = useAuth();

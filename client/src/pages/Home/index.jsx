@@ -1,6 +1,6 @@
-import SignIn from "../components/SignIn/SignIn";
-import JobBoard from "./JobBoard";
-import { useAuth } from "../hooks";
+import SignIn from "../../components/SignIn/SignIn";
+import JobBoard from "../JobBoard";
+import { useAuth } from "../../hooks";
 
 const Home = () => {
   const { user } = useAuth();

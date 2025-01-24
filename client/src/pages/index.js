@@ -1,3 +1,3 @@
-export { default as Home } from "./Home";
-export { default as JobBoard } from "./JobBoard";
-export { default as Overview } from "./Overview";
+export { default as Home } from "./Home/index";
+export { default as JobBoard } from "./JobBoard/index";
+export { default as Overview } from "./Overview/index";
