@@ -1,5 +1,5 @@
 import { useAuth } from "../providers/AuthProvider";
-import Form from "../components/Form";
+import { Form } from "../components/";
 
 const JobBoard = () => {
   const { user } = useAuth();

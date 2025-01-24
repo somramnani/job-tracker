@@ -8,7 +8,7 @@ export { default as SignInCard } from "./SignIn/SignInCard";
 
 //Components
 export { default as ErrorMessage } from "./ErrorMessage";
-export { default as Form } from "./Form";
+export { default as Form } from "./Form/Form";
 export { default as GoogleLoginAuth } from "./GoogleLoginAuth";
-export { default as GoogleSheetsButton } from "./Form";
+export { default as GoogleSheetsButton } from "./GoogleSheetsButton";
 export { default as TitleWrapper } from "./TitleWrapper";
