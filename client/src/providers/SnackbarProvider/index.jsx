@@ -4,8 +4,8 @@ export const SnackbarContext = createContext();
 
 const SnackbarProvider = ({ children }) => {
   const [message, setMessage] = useState("");
-  const [open, setOpen] = useState(true);
-  const [type, setType] = useState("false");
+  const [open, setOpen] = useState(false);
+  const [type, setType] = useState("");
 
   const closeSnackbar = () => {
     setOpen(false);
