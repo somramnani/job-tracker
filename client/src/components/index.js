@@ -12,3 +12,4 @@ export { default as Form } from "./Form/Form";
 export { default as GoogleLoginAuth } from "./GoogleLoginAuth";
 export { default as GoogleSheetsButton } from "./GoogleSheetsButton";
 export { default as TitleWrapper } from "./TitleWrapper";
+export { default as WebScraper } from "./WebScraper";
