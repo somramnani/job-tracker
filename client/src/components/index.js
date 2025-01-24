@@ -12,3 +12,4 @@ export { default as Form } from "./Form";
 export { default as GoogleLoginAuth } from "./GoogleLoginAuth";
 export { default as GoogleSheetsButton } from "./Form";
 export { default as TitleWrapper } from "./TitleWrapper";
+export { default as PositionedSnackbar } from "./PositionedSnackbar/index";

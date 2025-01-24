@@ -2,10 +2,11 @@ import React from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router";
-import { useAuth } from "../providers/AuthProvider";
+import { useAuth, useSnackbar } from "../hooks";
 
 const GoogleLoginAuth = () => {
   const { setUser } = useAuth();
+  const { showSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
   return (
@@ -19,6 +20,8 @@ const GoogleLoginAuth = () => {
           console.log("Login Successful:", decodedUser);
 
           setUser(decodedUser);
+
+          showSnackbar({ message: "Logged in", type: "success" });
           navigate("/job-board");
         }}
         onError={() => {
