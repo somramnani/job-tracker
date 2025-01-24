@@ -9,18 +9,14 @@ import {
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useAuth, useSnackbar } from "../../hooks";
-
 import {
   ErrorMessage,
   GoogleLoginAuth,
   GoogleSheetsButton,
   FormButton,
 } from "../../components";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { Add, RemoveCircleOutline, HighlightOff } from "@mui/icons-material";
 import axios from "axios";
-
-import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 const Form = () => {
   const { user } = useAuth();
@@ -218,7 +214,7 @@ const Form = () => {
                     }}
                     onClick={() => clearInput(data.name)}
                   >
-                    <HighlightOffIcon />
+                    <HighlightOff />
                   </IconButton>
                 )}
 
@@ -253,15 +249,16 @@ const Form = () => {
               <>
                 <FormButton
                   message="Add to Job Board"
-                  icon={<AddIcon />}
+                  icon={<Add />}
                   isLoadingSubmit={isLoadingSubmit}
                   color="primary"
                 />
                 <FormButton
                   message="Clear Form"
-                  icon={<RemoveCircleOutlineIcon />}
-                  onClick={() => clearInput()}
+                  icon={<RemoveCircleOutline />}
+                  onClick={() => clearForm()}
                   color="secondary"
+                  type="button"
                 />
                 <GoogleSheetsButton />
               </>
