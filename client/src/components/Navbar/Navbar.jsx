@@ -8,6 +8,7 @@ const Navbar = () => {
   const navItems = [
     { title: "Job Board", link: "/job-board" },
     { title: "Overview", link: "/overview" },
+    { title: "Networking", link: "/networking" },
   ];
 
   return (
