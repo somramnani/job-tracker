@@ -33,5 +33,3 @@ const SnackbarProvider = ({ children }) => {
 };
 
 export default SnackbarProvider;
-
-export const useSnackbar = () => useContext(SnackbarContext);
