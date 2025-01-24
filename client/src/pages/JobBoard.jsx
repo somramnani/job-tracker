@@ -1,4 +1,4 @@
-import { useAuth } from "../providers/AuthProvider";
+import { useAuth } from "../hooks";
 import { Form, PositionedSnackbar } from "../components";
 
 const JobBoard = () => {
