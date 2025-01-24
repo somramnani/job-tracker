@@ -1,14 +1,11 @@
-import { Snackbar, Button, Alert } from "@mui/material";
+import { Snackbar, Alert } from "@mui/material";
 import { useSnackbar } from "../../hooks";
 
 const PositionedSnackbar = () => {
-  const { message, type, open, closeSnackbar, showSnackbar } = useSnackbar();
+  const { message, type, open, closeSnackbar } = useSnackbar();
 
   return (
     <div>
-      <Button onClick={() => showSnackbar("Logged in!", "success")}>
-        Open Snackbar
-      </Button>
       <Snackbar
         open={open}
         anchorOrigin={{

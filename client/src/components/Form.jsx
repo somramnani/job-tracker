@@ -8,7 +8,7 @@ import {
   IconButton,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useAuth } from "../hooks";
+import { useAuth, useSnackbar } from "../hooks";
 import GoogleLoginAuth from "./GoogleLoginAuth";
 import GoogleSheetsButton from "./GoogleSheetsButton";
 import AddIcon from "@mui/icons-material/Add";
@@ -20,6 +20,7 @@ import FormButton from "./FormButton";
 
 const Form = () => {
   const { user } = useAuth();
+  const { showSnackbar } = useSnackbar();
   const [formData, setFormData] = useState({
     date: new Date(),
     url: "",
@@ -158,12 +159,12 @@ const Form = () => {
     })
       .then((res) => res.text())
       .then((data) => {
-        alert(data);
         clearForm();
       })
       .catch((error) => console.log(error))
       .finally(() => {
         setLoadingSubmit(false);
+        showSnackbar({ message: "Added to Google Sheet", type: "success" });
       });
   };
 

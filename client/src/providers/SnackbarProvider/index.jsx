@@ -11,7 +11,7 @@ const SnackbarProvider = ({ children }) => {
     setOpen(false);
   };
 
-  const showSnackbar = (snackbarMessage, snackbarType) => {
+  const showSnackbar = ({ message: snackbarMessage, type: snackbarType }) => {
     setMessage(snackbarMessage);
     setType(snackbarType);
     setOpen(true);
