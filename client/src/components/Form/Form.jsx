@@ -8,13 +8,13 @@ import {
   IconButton,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useAuth } from "../providers/AuthProvider";
-import GoogleLoginAuth from "./GoogleLoginAuth";
-import GoogleSheetsButton from "./GoogleSheetsButton";
+import { useAuth } from "../../providers/AuthProvider";
+import GoogleLoginAuth from "../GoogleLoginAuth";
+import GoogleSheetsButton from "../GoogleSheetsButton";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import axios from "axios";
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "../ErrorMessage";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import FormButton from "./FormButton";
 
