@@ -14,5 +14,5 @@ export { default as GoogleLoginAuth } from "./GoogleLoginAuth";
 export { default as GoogleSheetsButton } from "./Form/Form";
 export { default as TitleWrapper } from "./TitleWrapper";
 export { default as PositionedSnackbar } from "./PositionedSnackbar/index";
-export { default as Module } from "./Module";
-export { default as CoverLetter } from "./CoverLetter";
+export { default as Module } from "./CoverLetter/Module";
+export { default as CoverLetter } from "./CoverLetter/CoverLetter";

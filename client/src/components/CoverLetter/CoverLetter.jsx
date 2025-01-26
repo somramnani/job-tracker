@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Module } from "../components";
+import { Module } from "components";
 
 const CoverLetter = () => {
   const [currentData, setCurrentData] = useState({
@@ -17,7 +17,7 @@ After the bootcamp, I worked at Trendsetter as a software engineer intern for 7 
 
 I am currently a fellow at Formation, a highly selective program where I work with top-tier engineers from companies like Meta, Airbnb &  Amazon. I  have been learning best practices for front-end development specifically related to React.
 
-I am now looking for a Developer role with a company where I can contribute my skills within a strong team where I can learn, grow and make a meaningful impact."
+I am now looking for a Developer role with a company where I can contribute my skills within a strong team where I can learn, grow and make a meaningful impact.
   `
   );
   console.log(currentCoverLetter);
