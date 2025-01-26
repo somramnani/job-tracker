@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Navbar from "components/Navbar/Navbar";
+import { Navbar } from "components";
 import { MemoryRouter } from "react-router";
 
 jest.mock("../../hooks", () => ({
