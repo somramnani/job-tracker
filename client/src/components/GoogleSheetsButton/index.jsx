@@ -1,6 +1,5 @@
 import { Button } from "@mui/material";
-
-import { GoogleIcon } from "../Icons/CustomIcons";
+import { GoogleIcon } from "components/Icons/CustomIcons";
 
 const GoogleSheetsButton = () => {
   return (

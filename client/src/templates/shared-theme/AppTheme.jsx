@@ -1,11 +1,13 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { inputsCustomizations } from "../customizations/input";
-import { dataDisplayCustomizations } from "../customizations/dataDisplay";
-import { feedbackCustomizations } from "../customizations/feedback";
-import { navigationCustomizations } from "../customizations/navigation";
-import { surfacesCustomizations } from "../customizations/surfaces";
+import {
+  surfacesCustomizations,
+  inputsCustomizations,
+  dataDisplayCustomizations,
+  feedbackCustomizations,
+  navigationCustomizations,
+} from "templates/customizations";
 import { colorSchemes, typography, shadows, shape } from "./themePrimitives";
 
 function AppTheme(props) {

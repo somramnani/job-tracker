@@ -12,8 +12,9 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import ForgotPassword from "./ForgotPassword";
+//Export these to come just from components
 import { GoogleIcon, FacebookIcon, SitemarkIcon } from "../Icons/CustomIcons";
-import GoogleLoginAuth from "../GoogleLoginAuth";
+import { GoogleLoginAuth } from "components";
 import { Logo } from "../Navbar/navbarStyles";
 
 const Card = styled(MuiCard)(({ theme }) => ({
