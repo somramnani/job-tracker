@@ -12,9 +12,10 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import ForgotPassword from "./ForgotPassword";
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from "../Icons/CustomIcons";
-import GoogleLoginAuth from "../GoogleLoginAuth";
-import { Logo } from "../Navbar/navbarStyles";
+import { FacebookIcon } from "components/Icons/CustomIcons";
+import { GoogleLoginAuth } from "components";
+// import { Logo } from "components/Navbar/navbarStyles";
+// import { GoogleIcon, SitemarkIcon } from "components/Icons/CustomIcons";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",

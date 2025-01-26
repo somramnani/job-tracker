@@ -2,7 +2,7 @@ import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
 import { Logo, NavbarItems, NavbarButton } from "./navbarStyles";
 import { Link } from "react-router";
-import { useAuth } from "../../hooks";
+import { useAuth } from "hooks";
 
 const Navbar = () => {
   const { user, handleLogout } = useAuth();

@@ -8,13 +8,13 @@ import {
   IconButton,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useAuth, useSnackbar } from "../../hooks";
+import { useAuth, useSnackbar } from "hooks";
 import {
   ErrorMessage,
   GoogleLoginAuth,
   GoogleSheetsButton,
   FormButton,
-} from "../../components";
+} from "components";
 import { Add, RemoveCircleOutline, HighlightOff } from "@mui/icons-material";
 import axios from "axios";
 
