@@ -8,7 +8,7 @@ import {
   feedbackCustomizations,
   navigationCustomizations,
 } from "templates/customizations";
-import { colorSchemes, typography, shadows, shape } from "./themePrimitives";
+import { colorSchemes, typography, shadows, shape } from "../themePrimitives";
 
 function AppTheme(props) {
   const { children, disableCustomTheme, themeComponents } = props;
