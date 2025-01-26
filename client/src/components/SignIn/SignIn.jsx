@@ -1,10 +1,7 @@
 import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
-// these can be condensed
-import AppTheme from "templates/shared-theme/AppTheme";
-import ColorModeSelect from "templates/shared-theme/ColorModeSelect";
-
+import { AppTheme, ColorModeSelect } from "templates/shared-theme";
 import { SignInCard, Content } from "components";
 
 export default function SignIn(props) {
