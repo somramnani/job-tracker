@@ -2,6 +2,7 @@
 
 [![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker)
 
+# Job Tracker
 ## Available Scripts
 
 In the project directory, you can run:
