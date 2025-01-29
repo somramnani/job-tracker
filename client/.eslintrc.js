@@ -20,6 +20,8 @@ module.exports = {
   rules: {
     "testing-library/prefer-screen-queries": "off",
     "testing-library/no-container": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": "off",
   },
   overrides: [
     {
