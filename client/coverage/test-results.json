@@ -33,7 +33,7 @@
     "quiet": false,
     "projects": [
       {
-        "outputDir": "/Users/som_ramnani/Projects/job-tracker/client/test-results",
+        "outputDir": "/Users/som_ramnani/Projects/job-tracker/client/src/playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {},
@@ -47,7 +47,7 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/som_ramnani/Projects/job-tracker/client/test-results",
+        "outputDir": "/Users/som_ramnani/Projects/job-tracker/client/src/playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {},
@@ -61,7 +61,7 @@
         "timeout": 30000
       },
       {
-        "outputDir": "/Users/som_ramnani/Projects/job-tracker/client/test-results",
+        "outputDir": "/Users/som_ramnani/Projects/job-tracker/client/src/playwright/test-results",
         "repeatEach": 1,
         "retries": 0,
         "metadata": {},
@@ -115,17 +115,17 @@
                     {
                       "workerIndex": 1,
                       "status": "passed",
-                      "duration": 1017,
+                      "duration": 1058,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-01-29T06:03:58.826Z",
+                      "startTime": "2025-01-29T14:44:44.493Z",
                       "attachments": [
                         {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/som_ramnani/Projects/job-tracker/client/test-results/pages-JobBoard-Job-Board-should-render-the-page-chromium/trace.zip"
+                          "path": "/Users/som_ramnani/Projects/job-tracker/client/src/playwright/test-results/pages-JobBoard-Job-Board-should-render-the-page-chromium/trace.zip"
                         }
                       ]
                     }
@@ -153,17 +153,17 @@
                     {
                       "workerIndex": 2,
                       "status": "passed",
-                      "duration": 1291,
+                      "duration": 1287,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-01-29T06:03:58.819Z",
+                      "startTime": "2025-01-29T14:44:44.501Z",
                       "attachments": [
                         {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/som_ramnani/Projects/job-tracker/client/test-results/pages-JobBoard-Job-Board-s-e796e--when-clear-form-is-clicked-chromium/trace.zip"
+                          "path": "/Users/som_ramnani/Projects/job-tracker/client/src/playwright/test-results/pages-JobBoard-Job-Board-s-e796e--when-clear-form-is-clicked-chromium/trace.zip"
                         }
                       ]
                     }
@@ -191,17 +191,17 @@
                     {
                       "workerIndex": 3,
                       "status": "passed",
-                      "duration": 1079,
+                      "duration": 1121,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-01-29T06:03:58.844Z",
+                      "startTime": "2025-01-29T14:44:44.502Z",
                       "attachments": [
                         {
                           "name": "trace",
                           "contentType": "application/zip",
-                          "path": "/Users/som_ramnani/Projects/job-tracker/client/test-results/pages-JobBoard-Job-Board-s-e41ef-mpany-fields-are-not-found--chromium/trace.zip"
+                          "path": "/Users/som_ramnani/Projects/job-tracker/client/src/playwright/test-results/pages-JobBoard-Job-Board-s-e41ef-mpany-fields-are-not-found--chromium/trace.zip"
                         }
                       ]
                     }
@@ -221,8 +221,8 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-01-29T06:03:58.200Z",
-    "duration": 2288.876,
+    "startTime": "2025-01-29T14:44:43.878Z",
+    "duration": 2265.267,
     "expected": 3,
     "skipped": 0,
     "unexpected": 0,
