@@ -1,7 +1,6 @@
 
-# Playwright
 node_modules/
 playwright
 /blob-report/
 /playwright/.cache/
-coverage
+
