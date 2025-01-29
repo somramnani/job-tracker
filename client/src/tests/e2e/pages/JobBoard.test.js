@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
     );
   });
 
-  await page.goto("http://localhost:3000/job-board");
+  await page.goto("/job-board");
 });
 
 const inputFields = [
@@ -33,7 +33,6 @@ test.describe("Job Board", () => {
   test("should clear text input inputFields when clear form is clicked", async ({
     page,
   }) => {
-    console.log();
     for (const inputField of inputFields) {
       await page.getByLabel(inputField.label).fill(inputField.value);
     }
