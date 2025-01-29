@@ -158,7 +158,7 @@ const Form = () => {
       }&Contact=${formData.pointOfContact}`,
     })
       .then((res) => res.text())
-      .then((data) => {
+      .then(() => {
         clearForm();
       })
       .catch((error) => console.log(error))

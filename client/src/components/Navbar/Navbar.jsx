@@ -1,4 +1,3 @@
-import React from "react";
 import { AppBar, Toolbar } from "@mui/material";
 import { Logo, NavbarItems, NavbarButton } from "./navbarStyles";
 import { Link } from "react-router";
