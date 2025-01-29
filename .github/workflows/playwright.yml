@@ -19,7 +19,7 @@ jobs:
         run: npx playwright install --with-deps
         working-directory: client
       - name: Run Playwright tests
-        run: npm run client-test-e2e
+        run: npm run test:e2e --prefix client
         working-directory: client
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
