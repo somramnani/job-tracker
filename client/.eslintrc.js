@@ -25,7 +25,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["*.playwright.js", "*.test.js"],
+      files: ["*.playwright.js", "*.test.js", "*.test.jsx"],
       env: {
         jest: true,
       },
