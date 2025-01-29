@@ -1,0 +1,7 @@
+
+node_modules/
+playwright
+/blob-report/
+/playwright/.cache/
+
+src/tests/e2e/tests-examples

@@ -5,4 +5,5 @@ module.exports = {
   coverageDirectory: "./coverage",
   coverageReporters: ["json", "lcov", "text"],
   setupFilesAfterEnv: ["./setupTest.js"],
+  testPathIgnorePatterns: ["tests/e2e/"],
 };

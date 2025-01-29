@@ -1,7 +1,7 @@
 import { styled } from "@mui/system";
 import { Button, Container } from "@mui/material";
 
-export const Logo = styled(Button)(({ theme }) => ({
+export const Logo = styled(Button)(() => ({
   fontFamily: "cursive",
   fontSize: "1.5rem",
   fontWeight: "bold",
@@ -11,7 +11,7 @@ export const Logo = styled(Button)(({ theme }) => ({
   whiteSpace: "nowrap",
 }));
 
-export const NavbarItems = styled(Container)(({ theme }) => ({
+export const NavbarItems = styled(Container)(() => ({
   display: "flex",
   justifyContent: "flex-end",
   alignItems: "center",
