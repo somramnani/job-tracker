@@ -1,4 +1,4 @@
-name: Run Test and Upload Coverage
+name: Unit tests
 
 on: [push, pull_request]
 
@@ -17,14 +17,11 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Install Server Dependencies
-        run: npm install --prefix server
-
       - name: Install Client Dependencies
         run: npm install --prefix client
 
       - name: Run tests with coverage
-        run: npm test
+        run: npm run client-test
 
       - name: Upload coverage to Codecov
         run: npm run coverage:upload

@@ -30,6 +30,7 @@
     "build": "react-scripts build",
     "test": "jest --coverage --verbose",
     "test:e2e": "npx playwright test",
+    "test:unit": "jest --coverage --verbose",
     "test:playwright-ui": "npx playwright test --ui",
     "eject": "react-scripts eject"
   },

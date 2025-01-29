@@ -26,6 +26,9 @@ module.exports = {
   overrides: [
     {
       files: ["*.playwright.js", "*.test.js"],
+      env: {
+        jest: true,
+      },
       rules: {
         "testing-library/prefer-screen-queries": "off",
         "testing-library/no-container": "off",
