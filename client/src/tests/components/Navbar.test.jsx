@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { Navbar } from "components";
 import { MemoryRouter } from "react-router";
-import * as useAuthModule from "hooks";
+import { useAuth } from "hooks";
 
 jest.mock("../../hooks", () => ({
   useAuth: jest.fn(),
 }));
 
 const renderNavbar = (mockUser) => {
-  useAuthModule.useAuth.mockReturnValue({
+  useAuth.mockReturnValue({
     user: mockUser,
     handleLogout: jest.fn(),
   });

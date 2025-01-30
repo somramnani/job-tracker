@@ -5,7 +5,7 @@ const PositionedSnackbar = () => {
   const { message, type, open, closeSnackbar } = useSnackbar();
 
   return (
-    <div>
+    <div data-testid="snackbar">
       <Snackbar
         open={open}
         anchorOrigin={{
