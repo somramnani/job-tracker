@@ -24,7 +24,6 @@ const SnackbarProvider = ({ children }) => {
     open,
     type,
   };
-
   return (
     <SnackbarContext.Provider value={contextValue}>
       {children}

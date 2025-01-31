@@ -5,9 +5,11 @@ import { useAuth } from "hooks";
 
 const Navbar = () => {
   const { user, handleLogout } = useAuth();
+
   const navItems = [
     { title: "Job Board", link: "/job-board" },
     { title: "Overview", link: "/overview" },
+    { title: "Networking", link: "/Networking" },
   ];
 
   return (

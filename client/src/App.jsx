@@ -1,7 +1,7 @@
 import "App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { Navbar, TitleWrapper } from "components";
-import { Home, JobBoard, Overview } from "pages";
+import { Home, JobBoard, Overview, Networking } from "pages";
 
 function App() {
   const routes = [
@@ -15,6 +15,11 @@ function App() {
       path: "/overview",
       element: <Overview />,
       title: "Overview | Job Tracker",
+    },
+    {
+      path: "/networking",
+      element: <Networking />,
+      title: "Networking | Job Tracker",
     },
   ];
 
