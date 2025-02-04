@@ -4,7 +4,7 @@ import { useSnackbar } from "hooks";
 import { Button } from "@mui/material";
 
 export default {
-  title: "Snackbar",
+  title: "Components/Snackbar",
   component: PositionedSnackbar,
   decorators: [
     (Story) => (
