@@ -8,6 +8,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:testing-library/react",
+    "plugin:storybook/recommended"
   ],
   parserOptions: {
     ecmaFeatures: {
