@@ -12,6 +12,7 @@ const PositionedSnackbar = () => {
           horizontal: "center",
           vertical: "bottom",
         }}
+        autoHideDuration={5000}
       >
         <Alert
           onClose={closeSnackbar}

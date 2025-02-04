@@ -5,3 +5,5 @@ playwright
 /playwright/.cache/
 
 src/tests/e2e/tests-examples
+
+*storybook.log
