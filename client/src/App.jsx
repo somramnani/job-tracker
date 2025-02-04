@@ -1,6 +1,6 @@
 import "App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
-import { Navbar, TitleWrapper } from "components";
+import { Navbar, TitleWrapper, SideNav } from "components";
 import { Home, JobBoard, Overview } from "pages";
 
 function App() {
@@ -23,6 +23,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
+          <SideNav />
           <Routes>
             {routes.map((route, index) => {
               return (

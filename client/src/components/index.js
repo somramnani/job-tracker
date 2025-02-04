@@ -14,3 +14,4 @@ export { default as GoogleLoginAuth } from "./GoogleLoginAuth/index";
 export { default as GoogleSheetsButton } from "./GoogleSheetsButton/index";
 export { default as TitleWrapper } from "./TitleWrapper";
 export { default as PositionedSnackbar } from "./PositionedSnackbar/index";
+export { default as SideNav } from "./SideNav/index";
