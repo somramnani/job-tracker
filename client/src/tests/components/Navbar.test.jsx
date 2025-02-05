@@ -19,8 +19,8 @@ const renderNavbarWithUser = (mockUser) => {
   );
 };
 
-describe("Navbar", () => {
-  it("renders the Navbar", () => {
+describe("Navbar Component", () => {
+  it("should render the Navbar component onto the screen", () => {
     const mockUser = null;
     renderNavbarWithUser(mockUser);
 
@@ -28,7 +28,7 @@ describe("Navbar", () => {
     expect(navbar).toBeInTheDocument();
   });
 
-  it("renders Logout button when a user is logged in", () => {
+  it("should render a Logout button when a user is logged in", () => {
     const mockUser = { id: "1", name: "Som", email: "test@gmail.com" };
 
     renderNavbarWithUser(mockUser);
