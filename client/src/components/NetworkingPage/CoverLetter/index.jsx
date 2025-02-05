@@ -17,7 +17,7 @@ When I finished my associate's degree, I went to the Rutgers Coding Bootcamp to 
 
 After the bootcamp, I worked at Trendsetter as a software engineer intern for 7 months. Trendsetter is a digital marketing company that helps promote artists. The project I was working on was an internal dashboard application built on React, NextJS & TypeScript. I was mainly working on the Front-End to help set up the initial project so the project could be shipped out to the team.
 
-I am currently a fellow at Formation, a highly selective program where I work with top-tier engineers from companies like Meta, Airbnb & Amazon. I  have been learning best practices for front-end development specifically related to React.
+I am currently a fellow at Formation, a highly selective program where I work with top-tier engineers from companies like Meta, Airbnb & Amazon. I have been learning best practices for front-end development specifically related to React.
 
 I am now looking for a Developer role with a company where I can contribute my skills within a strong team where I can learn, grow and make a meaningful impact.
 

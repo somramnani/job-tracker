@@ -7,7 +7,7 @@ import {
   Box,
 } from "@mui/material/";
 import { Add, Close } from "@mui/icons-material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TextField } from "@mui/material";
 import { useSnackbar } from "hooks";
 import BootstrapDialog from "./BootstrapDialog";
@@ -19,27 +19,15 @@ const Module = ({
   setCurrentData,
   currentData,
 }) => {
-  // const [userInput, setUserInput, currentData] = useState({
-  //   company: "",
-  //   jobName: "",
-  // });
-
   const { showSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    /*
-    setCurrentData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    */
 
     setCurrentData((prev) => {
       const updatedData = { ...prev, [name]: value };
 
-      // Update the cover letter with the new data
       setCurrentCoverLetter(generateCoverLetter(updatedData));
 
       return updatedData;
@@ -57,12 +45,9 @@ const Module = ({
     navigator.clipboard
       .writeText(coverLetter)
       .then(() => {
-        // Show a Snackbar when copying is successful
         showSnackbar({ message: "Copied to clipboard!", type: "success" });
-        // You can customize the message and type
       })
       .catch((error) => {
-        // Show a Snackbar in case of an error
         showSnackbar("Failed to copy. Please try again.", "error");
         console.error(error);
       });
@@ -112,10 +97,22 @@ const Module = ({
   
   I am now looking for a Developer role with a company where I can contribute my skills within a strong team where I can learn, grow and make a meaningful impact.
   
-  I look forward to working at ${data.company} because ${data.message}.  `;
+  I look forward to working at ${data.company} because ${data.message}.`;
+
+  useEffect(() => {
+    const observer = new ResizeObserver(() => {
+      window.requestAnimationFrame(() => {
+        window.dispatchEvent(new Event("resize"));
+      });
+    });
+
+    observer.observe(document.body);
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div>
+    <div style={{ maxWidth: "900px" }}>
       <Button
         variant="contained"
         color="primary"
@@ -128,7 +125,7 @@ const Module = ({
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        sx
+        sx={{ "& .MuiDialog-paper": { width: "900px", maxWidth: "100%" } }}
       >
         <DialogTitle sx={{ m: 0, p: 2 }} id="customized-dialog-title">
           {message}
@@ -152,15 +149,14 @@ const Module = ({
             label={message}
             placeholder={"Placeholder"}
             value={coverLetter}
-            style={{ width: "99%" }}
+            sx={{ width: "100%", marginBottom: "16px" }}
             onChange={(event) => {
               setCurrentCoverLetter(event.target.value);
             }}
             multiline
           />
-          {/* <TextField fullWidth style={{ width: "99%" }} /> */}
           {moduleTextFieldInputs.map((data, index) => (
-            <Box key={index} sx={{ position: "relative" }}>
+            <Box key={index} sx={{ position: "relative", mb: 2 }}>
               <TextField
                 fullWidth
                 label={data.label}
