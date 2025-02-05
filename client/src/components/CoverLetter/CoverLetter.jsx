@@ -11,7 +11,7 @@ const CoverLetter = () => {
 
 I have taken computer science classes at Fairleigh Dickinson University and I hold an associate degree in web development where I learned HTML, CSS & SQL. 
 
-When I finished my associate's degree, I  went to the Rutgers Coding Bootcamp to further my knowledge of web development. At Rutgers, I learned more about HTML/CSS, and then I learned JavaScript & React. 
+When I finished my associate's degree, I went to the Rutgers Coding Bootcamp to further my knowledge of web development. At Rutgers, I learned more about HTML/CSS, and then I learned JavaScript & React. 
 
 After the bootcamp, I worked at Trendsetter as a software engineer intern for 7 months. Trendsetter is a digital marketing company that helps promote artists. The project I was working on was an internal dashboard application built on React, NextJS & TypeScript. I was mainly working on the front-end to help set up the initial project so the project could be shipped out to the team.
 

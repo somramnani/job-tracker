@@ -8,7 +8,7 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:testing-library/react",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
   ],
   parserOptions: {
     ecmaFeatures: {
@@ -33,6 +33,7 @@ module.exports = {
       rules: {
         "testing-library/prefer-screen-queries": "off",
         "testing-library/no-container": "off",
+        "no-irregular-whitespace": "off",
       },
     },
   ],
