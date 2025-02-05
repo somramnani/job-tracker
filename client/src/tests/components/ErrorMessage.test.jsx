@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { ErrorMessage } from "components";
 
-describe("Error Message", () => {
-  it("renders the Error message", () => {
+describe("Error Message component", () => {
+  it("should render the component onto the screen", () => {
     render(<ErrorMessage fieldName="Company" isFieldNotFound={true} />);
 
     const errorMessage = screen.getByTestId("error-message");
