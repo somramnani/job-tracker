@@ -1,11 +1,10 @@
 import { useAuth } from "hooks";
-import { Form, PositionedSnackbar } from "components";
+import { Form } from "components";
 
 const JobBoard = () => {
   const { user } = useAuth();
   return (
     <div data-testid="job-board">
-      <PositionedSnackbar />
       <div style={{ textAlign: "center" }}>
         {user ? (
           <h1>Welcome {user.given_name} to your Job Board!</h1>

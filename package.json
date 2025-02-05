@@ -33,7 +33,15 @@
       "json",
       "lcov",
       "text"
-    ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 10
+      }
+    }
   },
   "dependencies": {
     "codecov": "^3.8.3"

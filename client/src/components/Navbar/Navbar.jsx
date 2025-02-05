@@ -5,9 +5,11 @@ import { useAuth } from "hooks";
 
 const Navbar = () => {
   const { user, handleLogout } = useAuth();
+
   const navItems = [
     { title: "Job Board", link: "/job-board" },
     { title: "Overview", link: "/overview" },
+    { title: "Networking", link: "/networking" },
   ];
 
   return (
@@ -39,15 +41,17 @@ const Navbar = () => {
           </Logo>
 
           <NavbarItems>
-            {navItems.map((item, index) => (
-              <NavbarButton key={index} component={Link} to={item.link}>
-                {item.title}
-              </NavbarButton>
-            ))}
             {user ? (
-              <NavbarButton component={Link} to="/" onClick={handleLogout}>
-                Logout
-              </NavbarButton>
+              <div>
+                {navItems.map((item, index) => (
+                  <NavbarButton key={index} component={Link} to={item.link}>
+                    {item.title}
+                  </NavbarButton>
+                ))}
+                <NavbarButton component={Link} to="/" onClick={handleLogout}>
+                  Logout
+                </NavbarButton>
+              </div>
             ) : (
               <NavbarButton component={Link} to="/">
                 Login

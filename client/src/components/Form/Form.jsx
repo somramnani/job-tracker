@@ -39,6 +39,11 @@ const Form = () => {
   const serverURL = process.env.REACT_APP_SERVER_URL;
   const scrapeAPIUrl = `${serverURL}/scrape`;
 
+  const setCompanyAndJobFound = (data) => {
+    setCompanyNotFound(data);
+    setJobNameNotFound(data);
+  };
+
   const getScrapedData = (url) => {
     setLoading(true);
 
@@ -58,8 +63,7 @@ const Form = () => {
       })
       .catch((error) => {
         console.error("Failed to fetch:", error.message);
-        setCompanyNotFound(true);
-        setJobNameNotFound(true);
+        setCompanyAndJobFound(true);
       })
       .finally(() => {
         setLoading(false);
@@ -131,8 +135,7 @@ const Form = () => {
       company: "",
       pointOfContact: "",
     });
-    setCompanyNotFound(false);
-    setJobNameNotFound(false);
+    setCompanyAndJobFound(false);
   };
 
   const clearInput = (input) => {
