@@ -1,14 +1,14 @@
 import { render, screen } from "@testing-library/react";
 import { Navbar } from "components";
 import { MemoryRouter } from "react-router";
-import * as useAuthModule from "hooks";
+import { useAuth } from "hooks";
 
 jest.mock("../../hooks", () => ({
   useAuth: jest.fn(),
 }));
 
-const renderNavbar = (mockUser) => {
-  useAuthModule.useAuth.mockReturnValue({
+const renderNavbarWithUser = (mockUser) => {
+  useAuth.mockReturnValue({
     user: mockUser,
     handleLogout: jest.fn(),
   });
@@ -19,19 +19,19 @@ const renderNavbar = (mockUser) => {
   );
 };
 
-describe("Navbar", () => {
-  it("renders the Navbar", () => {
+describe("Navbar Component", () => {
+  it("should render the Navbar component onto the screen", () => {
     const mockUser = null;
-    renderNavbar(mockUser);
+    renderNavbarWithUser(mockUser);
 
     const navbar = screen.getByTestId("navbar");
     expect(navbar).toBeInTheDocument();
   });
 
-  it("renders Logout button when a user is logged in", () => {
+  it("should render a Logout button when a user is logged in", () => {
     const mockUser = { id: "1", name: "Som", email: "test@gmail.com" };
 
-    renderNavbar(mockUser);
+    renderNavbarWithUser(mockUser);
 
     const logoutButton = screen.getByText("Logout");
     expect(logoutButton).toBeInTheDocument();
