@@ -15,6 +15,5 @@ export { default as GoogleSheetsButton } from "./GoogleSheetsButton/index";
 export { default as TitleWrapper } from "./TitleWrapper";
 export { default as PositionedSnackbar } from "./PositionedSnackbar/index";
 
-export { default as CoverLetter } from "./NetworkingPage/CoverLetter";
-export { default as Module } from "./NetworkingPage/Module";
-export { default as NetworkingForm } from "./NetworkingPage/NetworkingForm";
+export { default as CoverLetter } from "./CoverLetter";
+export { default as Module } from "./CoverLetter/Module";
