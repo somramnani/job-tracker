@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Module, FullScreenDialog } from "components";
+import { Module } from "components";
 
 const CoverLetter = () => {
   const [currentData, setCurrentData] = useState({
@@ -27,7 +27,6 @@ I look forward to working at ${currentData.company} because ${currentData.messag
 
   return (
     <div data-testid="cover-letter">
-      {" "}
       <h1>Cover Letter</h1>
       <Module
         currentData={currentData}
@@ -37,7 +36,6 @@ I look forward to working at ${currentData.company} because ${currentData.messag
         setCurrentCoverLetter={setCurrentCoverLetter}
         X
       />
-      <FullScreenDialog />
     </div>
   );
 };

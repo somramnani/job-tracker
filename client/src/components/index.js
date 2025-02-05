@@ -17,5 +17,4 @@ export { default as PositionedSnackbar } from "./PositionedSnackbar/index";
 
 export { default as CoverLetter } from "./NetworkingPage/CoverLetter";
 export { default as Module } from "./NetworkingPage/Module";
-export { default as FullScreenDialog } from "./NetworkingPage/FullScreenDialog";
 export { default as NetworkingForm } from "./NetworkingPage/NetworkingForm";

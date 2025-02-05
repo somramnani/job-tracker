@@ -6,11 +6,13 @@ import {
   IconButton,
   Box,
 } from "@mui/material/";
-import { Add, Close } from "@mui/icons-material";
+import { Add, Close, HighlightOff } from "@mui/icons-material";
 import { useState, useEffect } from "react";
-import { TextField } from "@mui/material";
+import { TextField, CircularProgress } from "@mui/material";
 import { useSnackbar } from "hooks";
 import BootstrapDialog from "./BootstrapDialog";
+import axios from "axios";
+import { ErrorMessage } from "components";
 
 const Module = ({
   message,
@@ -22,8 +24,54 @@ const Module = ({
   const { showSnackbar } = useSnackbar();
   const [open, setOpen] = useState(false);
 
+  const serverURL = process.env.REACT_APP_SERVER_URL;
+  const scrapeAPIUrl = `${serverURL}/scrape`;
+
+  const [companyNotFound, setCompanyNotFound] = useState(false);
+  const [jobNameNotFound, setJobNameNotFound] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const setCompanyAndJobFound = (data) => {
+    setCompanyNotFound(data);
+    setJobNameNotFound(data);
+  };
+
+  const getScrapedData = (url) => {
+    setLoading(true);
+
+    axios
+      .get(`${scrapeAPIUrl}/${url}`)
+      .then((response) => {
+        if (response.data) {
+          setCurrentData((prev) => {
+            const updatedData = {
+              ...prev,
+              jobName: response.data.jobTitle || "",
+              company: response.data.companyName || "",
+            };
+
+            setCurrentCoverLetter(generateCoverLetter(updatedData));
+            return updatedData;
+          });
+          setCompanyNotFound(!response.data.companyName);
+          setJobNameNotFound(!response.data.jobTitle);
+        }
+      })
+      .catch((error) => {
+        console.error("Failed to fetch:", error.message);
+        setCompanyAndJobFound(true);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "url") {
+      getScrapedData(value);
+    }
 
     setCurrentData((prev) => {
       const updatedData = { ...prev, [name]: value };
@@ -32,6 +80,14 @@ const Module = ({
 
       return updatedData;
     });
+
+    if (name === "company" && value.trim() !== "") {
+      setCompanyNotFound(false);
+    }
+
+    if (name === "jobName" && value.trim() !== "") {
+      setJobNameNotFound(false);
+    }
   };
 
   const handleClickOpen = () => {
@@ -51,6 +107,41 @@ const Module = ({
         showSnackbar("Failed to copy. Please try again.", "error");
         console.error(error);
       });
+  };
+
+  const clearInput = (value) => {
+    setCurrentData((prev) => ({
+      ...prev,
+      [value]: "",
+    }));
+
+    setCurrentData((prev) => {
+      const updatedData = { ...prev, [name]: value };
+
+      setCurrentCoverLetter(generateCoverLetter(updatedData));
+
+      return updatedData;
+    });
+    setCompanyAndJobFound(false);
+  };
+
+  const clearForm = () => {
+    setCurrentData({
+      url: "",
+      jobName: "",
+      company: "",
+      message: "",
+    });
+
+    setCurrentData((prev) => {
+      const updatedData = { ...prev, [name]: "" };
+
+      setCurrentCoverLetter(generateCoverLetter(updatedData));
+
+      return updatedData;
+    });
+    setCompanyNotFound(false);
+    setJobNameNotFound(false);
   };
 
   const moduleTextFieldInputs = [
@@ -166,12 +257,51 @@ const Module = ({
                 required={data.required}
                 multiline={data.multiline}
               />
+
+              {currentData[data.name] && (
+                <IconButton
+                  sx={{
+                    position: "absolute",
+                    right: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                  }}
+                  onClick={() => clearInput(data.name)}
+                >
+                  <HighlightOff />
+                </IconButton>
+              )}
+              {(data.name === "jobName" || data.name === "company") &&
+                loading && (
+                  <Box
+                    sx={{
+                      position: "absolute",
+                      right: 10,
+                      top: "50%",
+                      transform: "translateY(-50%)",
+                      zIndex: 1,
+                    }}
+                  >
+                    <CircularProgress size={24} />
+                  </Box>
+                )}
+              <ErrorMessage
+                fieldName="Company"
+                isFieldNotFound={companyNotFound && data.name === "company"}
+              />
+              <ErrorMessage
+                fieldName="Job Title"
+                isFieldNotFound={jobNameNotFound && data.name === "jobName"}
+              />
             </Box>
           ))}
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleCopy}>
             Copy
+          </Button>
+          <Button autoFocus onClick={clearForm}>
+            Clear Form
           </Button>
           <Button autoFocus onClick={handleClose}>
             Save changes (Add to cover letter board)
