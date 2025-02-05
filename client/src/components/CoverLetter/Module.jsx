@@ -21,10 +21,10 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
 }));
 
 const Module = ({ message, coverLetter, setCurrentCoverLetter }) => {
-  const [userInput, setUserInput] = useState({
-    company: "",
-    jobName: "",
-  });
+  // const [userInput, setUserInput] = useState({
+  //   company: "",
+  //   jobName: "",
+  // });
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -39,7 +39,7 @@ const Module = ({ message, coverLetter, setCurrentCoverLetter }) => {
   };
 
   return (
-    <div>
+    <div style={{ maxWidth: "600px" }}>
       {/* <Button variant="outlined" onClick={handleClickOpen}>
         Open dialog
       </Button> */}
@@ -79,13 +79,12 @@ const Module = ({ message, coverLetter, setCurrentCoverLetter }) => {
             placeholder={"Placeholder"}
             value={coverLetter}
             fullWidth
-            style={{ width: "500px" }}
             onChange={(event) => {
               setCurrentCoverLetter(event.target.value);
             }}
             multiline
           />
-          <TextField fullWidth style={{ width: "500px" }} />
+          <TextField fullWidth />
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleCopy}>
