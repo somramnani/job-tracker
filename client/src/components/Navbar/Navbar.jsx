@@ -41,15 +41,17 @@ const Navbar = () => {
           </Logo>
 
           <NavbarItems>
-            {navItems.map((item, index) => (
-              <NavbarButton key={index} component={Link} to={item.link}>
-                {item.title}
-              </NavbarButton>
-            ))}
             {user ? (
-              <NavbarButton component={Link} to="/" onClick={handleLogout}>
-                Logout
-              </NavbarButton>
+              <div>
+                {navItems.map((item, index) => (
+                  <NavbarButton key={index} component={Link} to={item.link}>
+                    {item.title}
+                  </NavbarButton>
+                ))}
+                <NavbarButton component={Link} to="/" onClick={handleLogout}>
+                  Logout
+                </NavbarButton>
+              </div>
             ) : (
               <NavbarButton component={Link} to="/">
                 Login
