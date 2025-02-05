@@ -1,4 +1,4 @@
-import { CoverLetter } from "../components";
+import { CoverLetter } from "components";
 
 const Networking = () => {
   return (

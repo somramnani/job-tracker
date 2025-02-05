@@ -11,7 +11,7 @@ export { default as ErrorMessage } from "./ErrorMessage";
 export { default as Form } from "./Form/Form";
 export { default as FormButton } from "./Form/FormButton";
 export { default as GoogleLoginAuth } from "./GoogleLoginAuth";
-export { default as GoogleSheetsButton } from "./Form/Form";
+export { default as GoogleSheetsButton } from "./GoogleSheetsButton/index";
 export { default as TitleWrapper } from "./TitleWrapper";
 export { default as PositionedSnackbar } from "./PositionedSnackbar/index";
 export { default as Module } from "./CoverLetter/Module";
