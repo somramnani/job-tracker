@@ -35,20 +35,4 @@ describe("Snackbar Component", () => {
     expect(snackbar).toBeInTheDocument();
     expect(snackbar).toHaveTextContent("Open");
   });
-
-  // it("should close when the close button is clicked", async () => {
-  //   renderSnackbar();
-
-  //   const snackbar = screen.getByTestId("snackbar");
-  //   const closeButton = screen.getByRole("button", { title: "Close" });
-  //   fireEvent.click(closeButton);
-
-  //   console.log({ closeButton });
-
-  //   await waitFor(() => {
-  //     expect(mockCloseSnackbar).toHaveBeenCalledTimes(1);
-  //     // expect(screen.queryByText("Open")).not.toBeInTheDocument();
-  //     expect(snackbar).not.toBeVisible();
-  //   });
-  // });
 });
