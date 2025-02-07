@@ -74,7 +74,7 @@ const Form = () => {
     setLoadingCategory(true);
 
     const categoryKeywords = {
-      CS: ["software engineer", "qa", "developer", "tester"],
+      CS: ["software", "engineer", "qa", "developer", "tester"],
       IT: ["help desk"],
       Food: ["cook", "chef", "dishwasher"],
     };

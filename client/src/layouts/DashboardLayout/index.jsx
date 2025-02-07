@@ -69,7 +69,10 @@ const Layout = () => {
       theme={theme}
       authentication={authentication}
       session={session}
-      branding={{ title: "Job Tracker" }}
+      branding={{
+        title: "Job Tracker",
+        homeUrl: "/job-board",
+      }}
     >
       <DashboardLayout
         slots={{
