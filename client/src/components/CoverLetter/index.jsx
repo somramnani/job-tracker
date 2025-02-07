@@ -26,7 +26,7 @@ I look forward to working at ${currentData.company} because ${currentData.messag
   );
 
   return (
-    <div data-testid="cover-letter">
+    <div style={{ textAlign: "center" }} data-testid="cover-letter">
       <h1>Cover Letter</h1>
       <Module
         currentData={currentData}

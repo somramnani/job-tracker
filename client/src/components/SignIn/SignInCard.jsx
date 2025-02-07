@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MuiCard from "@mui/material/Card";
@@ -12,10 +11,8 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { styled } from "@mui/material/styles";
 import ForgotPassword from "./ForgotPassword";
-import { FacebookIcon } from "components/Icons/CustomIcons";
 import { GoogleLoginAuth } from "components";
-// import { Logo } from "components/Navbar/navbarStyles";
-// import { GoogleIcon, SitemarkIcon } from "components/Icons/CustomIcons";
+import { useState } from "react";
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: "flex",
@@ -36,11 +33,11 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 export default function SignInCard() {
-  const [emailError, setEmailError] = React.useState(false);
-  const [emailErrorMessage, setEmailErrorMessage] = React.useState("");
-  const [passwordError, setPasswordError] = React.useState(false);
-  const [passwordErrorMessage, setPasswordErrorMessage] = React.useState("");
-  const [open, setOpen] = React.useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = useState("");
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordErrorMessage, setPasswordErrorMessage] = useState("");
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -200,14 +197,6 @@ export default function SignInCard() {
           Sign in with Google
         </Button> */}
         <GoogleLoginAuth />
-        <Button
-          fullWidth
-          variant="outlined"
-          onClick={() => alert("Sign in with Facebook")}
-          startIcon={<FacebookIcon />}
-        >
-          Sign in with Facebook
-        </Button>
       </Box>
     </Card>
   );

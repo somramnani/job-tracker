@@ -1,49 +1,55 @@
 import "App.css";
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
-import { Navbar, TitleWrapper } from "components";
+import { TitleWrapper } from "components";
 import { Home, JobBoard, Overview, Networking } from "pages";
+import DashBoardLayout from "layouts/DashboardLayout";
+
+const routes = [
+  {
+    path: "/job-board",
+    element: <JobBoard />,
+    title: "Job Board | Job Tracker",
+  },
+  {
+    path: "/overview",
+    element: <Overview />,
+    title: "Overview | Job Tracker",
+  },
+  {
+    path: "/networking",
+    element: <Networking />,
+    title: "Networking | Job Tracker",
+  },
+];
 
 function App() {
-  const routes = [
-    { path: "/", element: <Home />, title: "Job Tracker" },
-    {
-      path: "/job-board",
-      element: <JobBoard />,
-      title: "Job Board | Job Tracker",
-    },
-    {
-      path: "/overview",
-      element: <Overview />,
-      title: "Overview | Job Tracker",
-    },
-    {
-      path: "/networking",
-      element: <Networking />,
-      title: "Networking | Job Tracker",
-    },
-  ];
-
   return (
-    <div data-testid="app">
+    <div className="App" data-testid="app">
       <Router>
-        <div className="App">
-          <Navbar />
-          <Routes>
-            {routes.map((route, index) => {
-              return (
-                <Route
-                  key={index}
-                  path={route.path}
-                  element={
-                    <TitleWrapper title={route.title}>
-                      {route.element}
-                    </TitleWrapper>
-                  }
-                />
-              );
-            })}
-          </Routes>
-        </div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <TitleWrapper title="Job Tracker">
+                <Home />
+              </TitleWrapper>
+            }
+          />
+          <Route element={<DashBoardLayout />}>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                element={
+                  <TitleWrapper title={route.title}>
+                    {route.element}
+                  </TitleWrapper>
+                }
+              />
+            ))}
+          </Route>
+        </Routes>
       </Router>
     </div>
   );

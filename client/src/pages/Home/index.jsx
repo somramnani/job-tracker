@@ -1,10 +1,11 @@
 import { SignIn } from "components";
-import { JobBoard } from "pages";
 import { useAuth } from "hooks";
+import { Navigate } from "react-router-dom";
 
 const Home = () => {
   const { user } = useAuth();
-  return <div data-testid="home-page">{user ? <JobBoard /> : <SignIn />}</div>;
+
+  return user ? <Navigate to="/job-board" replace /> : <SignIn />;
 };
 
 export default Home;
