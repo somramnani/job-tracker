@@ -10,6 +10,7 @@ import SidebarFooterAccount from "./AccountSidebar/SidebarFooterAccount";
 import { useAuth } from "hooks";
 import { useMemo, useState } from "react";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 const NAVIGATION = [
   {
@@ -34,6 +35,7 @@ const NAVIGATION = [
 ];
 
 const Layout = () => {
+  const navigate = useNavigate();
   const { user, handleLogout } = useAuth();
 
   const userSession = {
@@ -47,6 +49,7 @@ const Layout = () => {
   const handleSignOut = () => {
     setSession(null);
     handleLogout();
+    navigate("/");
   };
 
   const [session, setSession] = useState(userSession);
