@@ -1,5 +1,6 @@
 import { useAuth } from "hooks";
 import { Form } from "components";
+import SignOutButton from "components/SignOutButton";
 
 const JobBoard = () => {
   const { user } = useAuth();
@@ -13,6 +14,7 @@ const JobBoard = () => {
         )}
 
         <Form />
+        <SignOutButton />
       </div>
     </div>
   );
