@@ -19,12 +19,11 @@ const GoogleLoginAuth = () => {
           console.log("Login Successful:", decodedUser);
 
           setUser(decodedUser);
-
-          showSnackbar({ message: "Logged in", type: "success" });
           navigate("/job-board");
         }}
         onError={() => {
           console.log("Login Failed");
+          showSnackbar({ message: "Login Failed", type: "error" });
         }}
         auto_select={true}
       />
