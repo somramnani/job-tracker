@@ -1,9 +1,9 @@
-import { CoverLetter } from "components";
-
 const Networking = () => {
   return (
     <div>
-      <CoverLetter />
+      <h1>Networking Page</h1>
+      This will be Networking page where it will display people you can reach
+      out to people for the jobs you applied to.
     </div>
   );
 };

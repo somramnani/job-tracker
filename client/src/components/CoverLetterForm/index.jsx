@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Module } from "components";
 
-const CoverLetter = () => {
+const CoverLetterForm = () => {
   const [currentData, setCurrentData] = useState({
     url: "",
     company: "{company}",
@@ -40,4 +40,4 @@ I look forward to working at ${currentData.company} because ${currentData.messag
   );
 };
 
-export default CoverLetter;
+export default CoverLetterForm;

@@ -5,6 +5,7 @@ import {
   Dashboard,
   BarChart,
   ConnectWithoutContact,
+  Description,
 } from "@mui/icons-material";
 import SidebarFooterAccount from "./AccountSidebar/SidebarFooterAccount";
 import { useAuth } from "hooks";
@@ -23,6 +24,13 @@ const NAVIGATION = [
     title: "Job Board",
     icon: <Dashboard />,
   },
+
+  {
+    segment: "cover-letter",
+    title: "Cover Letter",
+    icon: <Description />,
+  },
+
   {
     segment: "overview",
     title: "Overview",
