@@ -5,12 +5,14 @@ import {
   Dashboard,
   BarChart,
   ConnectWithoutContact,
+  Description,
 } from "@mui/icons-material";
 import SidebarFooterAccount from "./AccountSidebar/SidebarFooterAccount";
 import { useAuth } from "hooks";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
+import { CircularProgress, Box } from "@mui/material";
 
 const NAVIGATION = [
   {
@@ -22,6 +24,13 @@ const NAVIGATION = [
     title: "Job Board",
     icon: <Dashboard />,
   },
+
+  {
+    segment: "cover-letter",
+    title: "Cover Letter",
+    icon: <Description />,
+  },
+
   {
     segment: "overview",
     title: "Overview",
@@ -36,6 +45,9 @@ const NAVIGATION = [
 
 const Layout = () => {
   const navigate = useNavigate();
+  const [isLoadingPage, setIsLoadingPage] = useState(false);
+  const { location } = useLocation();
+
   const { user, handleLogout } = useAuth();
 
   const userSession = {
@@ -63,6 +75,17 @@ const Layout = () => {
     }),
     [handleLogout]
   );
+
+  useEffect(() => {
+    setIsLoadingPage(true);
+
+    const timeout = setTimeout(() => {
+      setIsLoadingPage(false);
+    }, 500);
+
+    return () => clearTimeout(timeout);
+  }, [location]);
+
   return (
     <AppProvider
       navigation={NAVIGATION}
@@ -80,7 +103,20 @@ const Layout = () => {
           sidebarFooter: SidebarFooterAccount,
         }}
       >
-        <Outlet />
+        {isLoadingPage ? (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              height: "100vh",
+            }}
+          >
+            <CircularProgress />
+          </Box>
+        ) : (
+          <Outlet />
+        )}
       </DashboardLayout>
     </AppProvider>
   );
