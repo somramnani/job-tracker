@@ -1,3 +1,5 @@
+import AmountOfJobs from "./AmountOfJobs";
+
 const Overview = () => {
   return (
     <div>
@@ -7,6 +9,7 @@ const Overview = () => {
       <p>
         Here you will be able to see data from the jobs you have applied to!
       </p>
+      <AmountOfJobs />
     </div>
   );
 };
