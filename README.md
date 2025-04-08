@@ -1,8 +1,5 @@
-![Brand Logo](client/public/BrandLogo.png)
-
-[![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker)
-
 # Job Tracker
+[![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker)
 
 This project automates job data collection using an Express server. It scrapes job titles and company names from job posting sites, populates a form with the retrieved data, and then exports the entries to an Excel spreadsheet. Perfect for organizing job search efforts or analyzing job market trends.
 
