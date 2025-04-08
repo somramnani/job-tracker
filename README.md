@@ -10,6 +10,8 @@ This project automates job data collection using an Express server. It scrapes j
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 
+![Demo](./assets/demo/job-tracker-demo.gif)
+
 ## 📦 Technologies:
 
 - [React](https://reactjs.org/)
@@ -20,8 +22,12 @@ This project automates job data collection using an Express server. It scrapes j
 - [Jest](https://jestjs.io/)
 - [Vercel](https://vercel.com/) (for hosting frontend & backend)
 
-## Demo
+## Screenshots
+
+### Homepage
 
 ![Home Page](./assets/demo/homepage.png)
+
+### Dashboard
+
 ![Form](./assets/demo/form.png)
-![Demo](./assets/demo/job-tracker-demo.gif)
