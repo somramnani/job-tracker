@@ -16,5 +16,5 @@ This project automates job data collection using an Express server. It scrapes j
 - [Express](https://expressjs.com/)
 - [Material-UI](https://material-ui.com/)
 - [Playwright](https://playwright.dev/)
-- [Jest](https://jestjs.io/))
+- [Jest](https://jestjs.io/)
 - [Vercel](https://vercel.com/) (for hosting frontend & backend)
