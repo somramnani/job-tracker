@@ -13,8 +13,8 @@ This project automates job data collection using an Express server. It scrapes j
 ## 📦 Technologies:
 - [React](https://reactjs.org/)
 - [React Testing Libary](https://testing-library.com/)
-- [Express]([https://testing-library.com/)](https://expressjs.com/)
+- [Express](https://expressjs.com/)
 - [Material-UI](https://material-ui.com/)
-- [Playwright]([https://cse.google.com](https://playwright.dev/))
-- [Jest]([https://spoonacular.com/food-api/docs](https://jestjs.io/))
+- [Playwright](https://playwright.dev/)
+- [Jest](https://jestjs.io/))
 - [Vercel](https://vercel.com/) (for hosting frontend & backend)
