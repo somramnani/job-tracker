@@ -8,3 +8,13 @@ This project automates job data collection using an Express server. It scrapes j
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+
+
+## 📦 Technologies:
+- [React](https://reactjs.org/)
+- [React Testing Libary](https://testing-library.com/)
+- [Express]([https://testing-library.com/)](https://expressjs.com/)
+- [Material-UI](https://material-ui.com/)
+- [Playwright]([https://cse.google.com](https://playwright.dev/))
+- [Jest]([https://spoonacular.com/food-api/docs](https://jestjs.io/))
+- [Vercel](https://vercel.com/) (for hosting frontend & backend)
