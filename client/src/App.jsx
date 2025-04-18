@@ -2,7 +2,14 @@ import "App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { TitleWrapper } from "components";
-import { Home, JobBoard, Overview, Networking, CoverLetter } from "pages";
+import {
+  Home,
+  JobBoard,
+  Overview,
+  Networking,
+  CoverLetter,
+  JobDescriptions,
+} from "pages";
 import DashBoardLayout from "layouts/DashboardLayout";
 
 const routes = [
@@ -25,6 +32,11 @@ const routes = [
     path: "/networking",
     element: <Networking />,
     title: "Networking | Job Tracker",
+  },
+  {
+    path: "/job-descriptions",
+    element: <JobDescriptions />,
+    title: "Job Descriptions | Job Tracker",
   },
 ];
 
