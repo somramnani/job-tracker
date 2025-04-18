@@ -3,7 +3,7 @@ import AmountOfJobs from "./AmountOfJobs";
 const Overview = () => {
   return (
     <div>
-      <h1>Overview </h1>
+      <h1 className="title">Overview </h1>
       <p>(Currently under construction)</p>
 
       <p>

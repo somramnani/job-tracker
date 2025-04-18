@@ -1,3 +1,4 @@
+import "./styles.css";
 import { useState } from "react";
 import {
   TextField,
@@ -185,7 +186,7 @@ const Form = () => {
   ];
 
   return (
-    <Container maxWidth="sm">
+    <Container className="container-form" maxWidth="sm">
       <Box sx={{ mt: 4, mb: 4 }}>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
