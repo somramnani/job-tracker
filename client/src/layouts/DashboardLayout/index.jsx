@@ -6,6 +6,7 @@ import {
   BarChart,
   ConnectWithoutContact,
   Description,
+  Article,
 } from "@mui/icons-material";
 import SidebarFooterAccount from "./AccountSidebar/SidebarFooterAccount";
 import { useAuth } from "hooks";
@@ -40,6 +41,11 @@ const NAVIGATION = [
     segment: "networking",
     title: "Networking",
     icon: <ConnectWithoutContact />,
+  },
+  {
+    segment: "job-descriptions",
+    title: "Job Descriptions",
+    icon: <Article />,
   },
 ];
 
