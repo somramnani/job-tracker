@@ -1,5 +1,8 @@
 module.exports = {
-  moduleNameMapper: { "^axios$": "axios/dist/node/axios.cjs" },
+  moduleNameMapper: {
+    "^axios$": "axios/dist/node/axios.cjs",
+    "\\.(css|less|scss)$": "identity-obj-proxy",
+  },
   testEnvironment: "jsdom",
   collectCoverage: true,
   coverageDirectory: "./coverage",

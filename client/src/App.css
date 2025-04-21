@@ -1,0 +1,20 @@
+.title {
+  font-size: 1.5rem;
+  color: #333;
+  padding-bottom: 0.5rem;
+  padding-left: 0.5em;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.App {
+  background-color: #f5f5f5;
+}
+.container-border {
+  background-color: white;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  width: 90%;
+  margin: 5px;
+  padding: 5px;
+}
