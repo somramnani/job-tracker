@@ -12,7 +12,7 @@ This project automates job data collection using an Express server. It scrapes j
 
 ![Demo](./assets/demo/job-tracker-demo.gif)
 
-## 📦 Technologies:
+## 📦 Technologies
 
 - [React](https://reactjs.org/)
 - [React Testing Libary](https://testing-library.com/)
