@@ -9,7 +9,7 @@ import {
 import { Add, Close, HighlightOff } from "@mui/icons-material";
 import { useState, useEffect } from "react";
 import { TextField, CircularProgress } from "@mui/material";
-import { useSnackbar } from "hooks";
+import { useHandleCopy } from "hooks";
 import BootstrapDialog from "./BootstrapDialog";
 import axios from "axios";
 import { ErrorMessage } from "components";
@@ -21,7 +21,7 @@ const Module = ({
   setCurrentData,
   currentData,
 }) => {
-  const { showSnackbar } = useSnackbar();
+  const handleCopy = useHandleCopy();
   const [open, setOpen] = useState(false);
 
   const serverURL = process.env.REACT_APP_SERVER_URL;
@@ -35,7 +35,7 @@ const Module = ({
     setCompanyNotFound(data);
     setJobNameNotFound(data);
   };
-
+  //TODO: This needs to be consolidated somehow since we using it twice
   const getScrapedData = (url) => {
     setLoading(true);
 
@@ -95,18 +95,6 @@ const Module = ({
   };
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const handleCopy = () => {
-    navigator.clipboard
-      .writeText(coverLetter)
-      .then(() => {
-        showSnackbar({ message: "Copied to clipboard!", type: "success" });
-      })
-      .catch((error) => {
-        showSnackbar("Failed to copy. Please try again.", "error");
-        console.error(error);
-      });
   };
 
   const clearInput = (value) => {
@@ -297,7 +285,7 @@ const Module = ({
           ))}
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={handleCopy}>
+          <Button autoFocus onClick={() => handleCopy(coverLetter)}>
             Copy
           </Button>
           <Button autoFocus onClick={clearForm}>
