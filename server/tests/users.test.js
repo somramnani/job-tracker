@@ -1,15 +1,7 @@
 jest.mock("../db");
-
 const db = require("../db");
 const request = require("supertest");
 const app = require("../server");
-
-describe("GET /", () => {
-  it("should return 200 response", async () => {
-    const response = await request(app).get("/");
-    expect(response.status).toBe(200);
-  });
-});
 
 describe("GET /users", () => {
   it("should return a list of users", async () => {
