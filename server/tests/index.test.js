@@ -1,12 +1,12 @@
 jest.mock("../db");
 
+const db = require("../db");
 const request = require("supertest");
 const app = require("../server");
-const db = require("../db");
 
 describe("GET /", () => {
   it("should return 200 response", async () => {
-    db.query.mockImplementation((sql, cb) => cb(null, []));
+    db.query.mockImplementation((sql, callback) => callback(null, []));
 
     const response = await request(app).get("/");
     expect(response.status).toBe(200);
