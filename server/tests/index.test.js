@@ -6,6 +6,8 @@ const db = require("../db");
 
 describe("GET /", () => {
   it("should return 200 response", async () => {
+    db.query.mockImplementation((sql, cb) => cb(null, []));
+
     const response = await request(app).get("/");
     expect(response.status).toBe(200);
   });
