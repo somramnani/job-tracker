@@ -1,4 +1,4 @@
-import { SignIn } from "components";
+import { SignIn, AuthCard } from "features/auth"; // eslint-disable-line
 import { useAuth } from "hooks";
 import { Navigate } from "react-router-dom";
 

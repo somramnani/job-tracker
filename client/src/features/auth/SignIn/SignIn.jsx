@@ -2,7 +2,7 @@ import * as React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import { AppTheme, ColorModeSelect } from "templates/shared-theme";
-import { SignInCard, Content } from "components";
+import { SignInCard, Content } from "features/auth";
 
 export default function SignIn(props) {
   return (
