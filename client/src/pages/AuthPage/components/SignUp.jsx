@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {
   Box,
   Button,
@@ -13,7 +12,7 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import { Card } from "pages/AuthPage/components";
-import { GoogleIcon, FacebookIcon } from "components/Icons/CustomIcons";
+import { GoogleIcon } from "components/Icons/CustomIcons";
 
 const SignUp = ({ onSignInClick }) => {
   const [emailError, setEmailError] = useState(false);
@@ -56,7 +55,6 @@ const SignUp = ({ onSignInClick }) => {
       setNameError(false);
       setNameErrorMessage("");
     }
-
     return isValid;
   };
 
@@ -73,6 +71,7 @@ const SignUp = ({ onSignInClick }) => {
       password: data.get("password"),
     });
   };
+
   return (
     <Card variant="outlined">
       <Typography
