@@ -5,9 +5,8 @@ test.beforeEach(async ({ page }) => {
 });
 
 test.describe("Home Page", () => {
-  test("should render the page", async ({ page }) => {
-    const homePage = page.getByTestId("home-page");
-
-    await expect(homePage).toBeVisible();
+  test("redirects to /auth-page if not logged in", async ({ page }) => {
+    await page.goto("/");
+    await expect(page).toHaveURL("/auth-page");
   });
 });
