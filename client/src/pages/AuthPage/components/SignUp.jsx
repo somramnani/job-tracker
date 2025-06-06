@@ -160,9 +160,16 @@ const SignUp = ({ onSignInClick }) => {
           Already have an account?{" "}
           <Link
             component="button"
-            variant="body2"
-            onClick={onSignInClick}
-            sx={{ alignSelf: "center" }}
+            underline="none"
+            onClick={(e) => {
+              e.preventDefault();
+              onSignInClick();
+            }}
+            sx={{
+              alignSelf: "center",
+              fontWeight: "bold",
+              color: "primary.main",
+            }}
           >
             Sign in
           </Link>

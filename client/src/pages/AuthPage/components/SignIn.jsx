@@ -157,16 +157,21 @@ export default function SignInCard({ onSignUpClick }) {
         </Button>
         <Typography sx={{ textAlign: "center" }}>
           Don&apos;t have an account?{" "}
-          <span>
-            <Link
-              component="button"
-              variant="body2"
-              sx={{ alignSelf: "center" }}
-              onClick={onSignUpClick}
-            >
-              Sign up
-            </Link>
-          </span>
+          <Link
+            component="button"
+            underline="none"
+            onClick={(e) => {
+              e.preventDefault();
+              onSignUpClick();
+            }}
+            sx={{
+              alignSelf: "center",
+              fontWeight: "bold",
+              color: "primary.main",
+            }}
+          >
+            Sign up
+          </Link>
         </Typography>
       </Box>
       <Divider>or</Divider>
