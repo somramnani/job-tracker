@@ -1,10 +1,7 @@
--- Create the database/schema
 CREATE SCHEMA `job_tracker`;
 
--- Use the new database
 USE `job_tracker`;
 
--- Create the users table
 CREATE TABLE `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255),
