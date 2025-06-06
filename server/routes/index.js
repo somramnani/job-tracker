@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const scrapeRoute = require("./api/scrape/scrape");
+const scrapeRoute = require("./api/scrape");
+const usersRoute = require("./api/users");
 
 router.get("/", (req, res) => {
   res.json({
@@ -11,5 +12,6 @@ router.get("/", (req, res) => {
 });
 
 router.use("/api/scrape", scrapeRoute);
+router.use("/api/users", usersRoute);
 
 module.exports = router;
