@@ -2,7 +2,14 @@ import "App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { TitleWrapper } from "components";
-import { Home, JobBoard, Overview, Networking, CoverLetter } from "pages";
+import {
+  Home,
+  JobBoard,
+  Overview,
+  Networking,
+  CoverLetter,
+  AuthPage,
+} from "pages";
 import DashBoardLayout from "layouts/DashboardLayout";
 
 const routes = [
@@ -38,6 +45,14 @@ function App() {
             element={
               <TitleWrapper title="Job Tracker">
                 <Home />
+              </TitleWrapper>
+            }
+          />
+          <Route
+            path="/auth-page"
+            element={
+              <TitleWrapper title="Job Tracker | log in or sign up">
+                <AuthPage />
               </TitleWrapper>
             }
           />

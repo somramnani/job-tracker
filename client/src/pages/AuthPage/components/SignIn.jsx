@@ -10,7 +10,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Card, ForgotPassword } from "features/auth";
+import { Card, ForgotPassword } from "pages/AuthPage/components";
 import { GoogleLoginAuth } from "components";
 import { useState } from "react";
 
@@ -158,14 +158,14 @@ export default function SignInCard({ onSignUpClick }) {
         <Typography sx={{ textAlign: "center" }}>
           Don&apos;t have an account?{" "}
           <span>
-            <Link
+            <Button
               component="button"
               variant="body2"
               sx={{ alignSelf: "center" }}
               onClick={onSignUpClick}
             >
               Sign up
-            </Link>
+            </Button>
           </span>
         </Typography>
       </Box>
