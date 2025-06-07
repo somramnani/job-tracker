@@ -1,11 +1,4 @@
-jest.mock("mysql2", () => {
-  return {
-    createConnection: jest.fn(() => ({
-      connect: jest.fn((cb) => cb(null)),
-      query: jest.fn(),
-    })),
-  };
-});
+jest.mock("mysql2");
 
 describe("db.js in production (non-test) environment", () => {
   let db;
