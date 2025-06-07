@@ -1,10 +1,8 @@
-import { render, screen } from "@testing-library/react";
-import { PositionedSnackbar } from "components";
-import { MemoryRouter } from "react-router";
 import { useSnackbar } from "hooks";
-import { SnackbarProvider } from "providers";
+import { renderWithSnackbar } from "tests/utils/renderWithSnackbar";
+import { screen } from "@testing-library/react";
 
-jest.mock("../../hooks", () => ({
+jest.mock("../../../hooks", () => ({
   useSnackbar: jest.fn(),
 }));
 
@@ -17,19 +15,9 @@ beforeEach(() => {
   });
 });
 
-const renderSnackbar = () => {
-  render(
-    <MemoryRouter>
-      <SnackbarProvider>
-        <PositionedSnackbar />
-      </SnackbarProvider>
-    </MemoryRouter>
-  );
-};
-
 describe("Snackbar Component", () => {
   it(" should render the Snackbar with the correct message", () => {
-    renderSnackbar();
+    renderWithSnackbar(null);
 
     const snackbar = screen.getByTestId("snackbar");
     expect(snackbar).toBeInTheDocument();
