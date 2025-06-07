@@ -3,7 +3,7 @@ import { Navbar } from "components";
 import { MemoryRouter } from "react-router";
 import { useAuth } from "hooks";
 
-jest.mock("../../hooks", () => ({
+jest.mock("../../../hooks", () => ({
   useAuth: jest.fn(),
 }));
 
