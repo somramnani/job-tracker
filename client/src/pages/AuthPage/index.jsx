@@ -1,9 +1,7 @@
 import { useState } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
-import Stack from "@mui/material/Stack";
 import { AppTheme, ColorModeSelect } from "templates/shared-theme";
 import { SignIn, Content, SignUp } from "pages/AuthPage/components";
-import { Box, Zoom } from "@mui/material";
+import { Box, Zoom, CssBaseline, Stack } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
 
 const AuthPage = (props) => {
@@ -60,7 +58,6 @@ const AuthPage = (props) => {
             }}
           >
             <Content />
-
             <TransitionGroup>
               {showSignUp ? (
                 <Zoom key="signup" timeout={300}>
