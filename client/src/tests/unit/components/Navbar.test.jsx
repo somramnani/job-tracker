@@ -12,6 +12,7 @@ const renderNavbarWithUser = (mockUser) => {
     user: mockUser,
     handleLogout: jest.fn(),
   });
+
   render(
     <MemoryRouter>
       <Navbar />
