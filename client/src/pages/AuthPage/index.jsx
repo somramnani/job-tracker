@@ -1,10 +1,11 @@
-import { useState } from "react";
+/* eslint-disable */
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import { AppTheme, ColorModeSelect } from "templates/shared-theme";
 import { SignIn, Content, SignUp } from "pages/AuthPage/components";
 import { Box, Zoom } from "@mui/material";
 import { TransitionGroup } from "react-transition-group";
+import { useState } from "react";
 
 const AuthPage = (props) => {
   const [showSignUp, setShowSignUp] = useState(false);
@@ -13,6 +14,7 @@ const AuthPage = (props) => {
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
       <ColorModeSelect sx={{ position: "fixed", top: "1rem", right: "1rem" }} />
+
       <Stack
         direction="column"
         component="main"
@@ -42,41 +44,56 @@ const AuthPage = (props) => {
         ]}
       >
         <Stack
+          data-test-id="job-tracker-stack"
           direction={{ xs: "column-reverse", md: "row" }}
           sx={{
             justifyContent: "center",
+            alignItems: "center",
+            display: "flex",
             gap: { xs: 6, sm: 12 },
             p: 2,
             mx: "auto",
+            height: "700px",
           }}
         >
-          <Stack
-            direction={{ xs: "column-reverse", md: "row" }}
+          <Content />
+          <Box
             sx={{
               justifyContent: "center",
               gap: { xs: 6, sm: 12 },
               p: { xs: 2, sm: 4 },
               m: "auto",
+              width: "100%",
+              maxWidth: 700,
+              height: 500,
+              position: "relative",
+              transition: "height 0.3s ease",
             }}
           >
-            <Content />
+            <Zoom
+              in={!showSignUp}
+              unmountOnExit
+              mountOnEnter
+              timeout={300}
+              style={{ position: "absolute", top: 0, left: 0, width: "100%" }}
+            >
+              <div>
+                <SignIn onSignUpClick={() => setShowSignUp(true)} />
+              </div>
+            </Zoom>
 
-            <TransitionGroup>
-              {showSignUp ? (
-                <Zoom key="signup" timeout={300}>
-                  <Box>
-                    <SignUp onSignInClick={() => setShowSignUp(false)} />
-                  </Box>
-                </Zoom>
-              ) : (
-                <Zoom key="signin" timeout={300}>
-                  <Box>
-                    <SignIn onSignUpClick={() => setShowSignUp(true)} />
-                  </Box>
-                </Zoom>
-              )}
-            </TransitionGroup>
-          </Stack>
+            <Zoom
+              in={showSignUp}
+              unmountOnExit
+              mountOnEnter
+              timeout={300}
+              style={{ position: "absolute", top: 0, left: 0, width: "100%" }}
+            >
+              <div>
+                <SignUp onSignInClick={() => setShowSignUp(false)} />
+              </div>
+            </Zoom>
+          </Box>
         </Stack>
       </Stack>
     </AppTheme>
