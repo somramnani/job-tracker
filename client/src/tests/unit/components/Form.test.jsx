@@ -24,6 +24,26 @@ beforeEach(() => {
   });
 });
 
+const urlInputLabel = /URL Link/i;
+const jobNameInputLabel = /Job Name/i;
+const companyInputLabel = /Company/i;
+const categoryInputLabel = /Category/i;
+const pointOfContactInputLabel = /Point of Contact \(optional\)/i;
+
+const testInputField = (label, newValue) => {
+  const input = screen.getByLabelText(label);
+  fireEvent.change(input, { target: { value: newValue } });
+  expect(input.value).toBe(newValue);
+};
+
+const setAndTestInputFields = () => {
+  testInputField(urlInputLabel, "https://example.com");
+  testInputField(jobNameInputLabel, "QA Tester");
+  testInputField(companyInputLabel, "OpenAI");
+  testInputField(categoryInputLabel, "CS");
+  testInputField(pointOfContactInputLabel, "Jane Doe");
+};
+
 describe("Form Component", () => {
   it("renders form when user is logged in", () => {
     render(<Form />);
@@ -33,31 +53,20 @@ describe("Form Component", () => {
   it("updates input fields on change", () => {
     render(<Form />);
 
-    // URL
-    const urlInput = screen.getByLabelText(/URL Link/i);
-    fireEvent.change(urlInput, { target: { value: "https://example.com" } });
-    expect(urlInput.value).toBe("https://example.com");
+    setAndTestInputFields();
+  });
 
-    // Job Name
-    const jobNameInput = screen.getByLabelText(/Job Name/i);
-    fireEvent.change(jobNameInput, { target: { value: "QA Tester" } });
-    expect(jobNameInput.value).toBe("QA Tester");
+  it("clears all inputs when clicking Clear Form button", () => {
+    render(<Form />);
 
-    // Company
-    const companyInput = screen.getByLabelText(/Company/i);
-    fireEvent.change(companyInput, { target: { value: "OpenAI" } });
-    expect(companyInput.value).toBe("OpenAI");
+    setAndTestInputFields();
 
-    // Category
-    const categoryInput = screen.getByLabelText(/Category/i);
-    fireEvent.change(categoryInput, { target: { value: "CS" } });
-    expect(categoryInput.value).toBe("CS");
+    fireEvent.click(screen.getByText("Clear Form"));
 
-    // Point of Contact
-    const contactInput = screen.getByLabelText(
-      /Point of Contact \(optional\)/i
-    );
-    fireEvent.change(contactInput, { target: { value: "Jane Doe" } });
-    expect(contactInput.value).toBe("Jane Doe");
+    expect(screen.getByLabelText(urlInputLabel).value).toBe("");
+    expect(screen.getByLabelText(jobNameInputLabel).value).toBe("");
+    expect(screen.getByLabelText(companyInputLabel).value).toBe("");
+    expect(screen.getByLabelText(categoryInputLabel).value).toBe("");
+    expect(screen.getByLabelText(pointOfContactInputLabel).value).toBe("");
   });
 });
