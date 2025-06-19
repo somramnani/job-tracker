@@ -69,4 +69,11 @@ describe("Form Component", () => {
     expect(screen.getByLabelText(categoryInputLabel).value).toBe("");
     expect(screen.getByLabelText(pointOfContactInputLabel).value).toBe("");
   });
+
+  it("handles date change", () => {
+    render(<Form />);
+    const dateInput = screen.getByPlaceholderText("MM/DD/YYYY");
+    fireEvent.change(dateInput, { target: { value: "01/19/2025" } });
+    expect(dateInput.value).toBe("01/19/2025");
+  });
 });
