@@ -18,12 +18,13 @@ import {
 } from "components";
 import { Add, RemoveCircleOutline, HighlightOff } from "@mui/icons-material";
 import axios from "axios";
+import dayjs from "dayjs";
 
 const Form = () => {
   const { user } = useAuth();
   const { showSnackbar } = useSnackbar();
   const [formData, setFormData] = useState({
-    date: new Date(),
+    date: dayjs(),
     url: "",
     jobName: "",
     category: "",
@@ -129,7 +130,7 @@ const Form = () => {
 
   const clearForm = () => {
     setFormData({
-      date: new Date(),
+      date: dayjs(),
       url: "",
       jobName: "",
       category: "",
@@ -186,7 +187,11 @@ const Form = () => {
   ];
 
   return (
-    <Container className="container-form" maxWidth="sm">
+    <Container
+      className="container-form"
+      maxWidth="sm"
+      data-testid="form-component"
+    >
       <Box sx={{ mt: 4, mb: 4 }}>
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
