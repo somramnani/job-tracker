@@ -52,13 +52,11 @@ describe("Form Component", () => {
 
   it("updates input fields on change", () => {
     render(<Form />);
-
     setAndTestInputFields();
   });
 
   it("clears all inputs when clicking Clear Form button", () => {
     render(<Form />);
-
     setAndTestInputFields();
 
     fireEvent.click(screen.getByText("Clear Form"));
@@ -89,7 +87,6 @@ it("submits form and shows snackbar", async () => {
   );
 
   render(<Form />);
-
   setAndTestInputFields();
 
   fireEvent.click(screen.getByText("Add to Job Board"));
