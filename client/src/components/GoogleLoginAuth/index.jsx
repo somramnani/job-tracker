@@ -11,7 +11,6 @@ const GoogleLoginAuth = () => {
   return (
     <>
       <GoogleLogin
-        data-testid="google-login-auth-component"
         size="large"
         shape="pill"
         logo_alignment="center"
