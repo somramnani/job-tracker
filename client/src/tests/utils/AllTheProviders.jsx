@@ -1,8 +1,8 @@
 import { MemoryRouter } from "react-router";
-import { SnackbarProvider } from "providers";
-import { PositionedSnackbar } from "components";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { SnackbarProvider } from "providers";
+import { PositionedSnackbar } from "components";
 
 const AllTheProviders = ({ children }) => (
   <MemoryRouter>

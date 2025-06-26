@@ -30,10 +30,11 @@ yarn-error.log*
 #Files
 NOTES.md
 .env
+
 #Server Files
 server/routes/api/scrape/scrape-old.js
 server/routes/api/scrape/scrape-test.js
+
 # Client files
-client/src/tests/pages/index.test.jsx
-client/src/tests/pages/JobBoard.test.jsx
+client/src/tests/unit/components/notes.js
 

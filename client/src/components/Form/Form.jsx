@@ -156,8 +156,7 @@ const Form = () => {
     fetch(googleSheetsIdURL, {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `Date=${formData.date.toLocaleDateString("en-US")}&Link=${
-        formData.url
+      body: `Date=${formData.date.format("MM/DD/YYYY")}&Link=${formData.url}
       }&Job=${formData.jobName}&Company=${formData.company}&Category=${
         formData.category
       }&Contact=${formData.pointOfContact}`,
