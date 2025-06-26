@@ -6,7 +6,6 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const AllTheProviders = ({ children }) => (
   <MemoryRouter>
-    {" "}
     <AuthProvider>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <SnackbarProvider>

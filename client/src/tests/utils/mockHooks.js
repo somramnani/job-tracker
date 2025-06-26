@@ -11,6 +11,7 @@ export const mockSnackbar = ({
   type = "info",
   open = false,
   closeSnackbar = jest.fn(),
+  showSnackbar = jest.fn(),
 } = {}) => {
   const { useSnackbar } = require("hooks");
   useSnackbar.mockReturnValue({
@@ -18,5 +19,6 @@ export const mockSnackbar = ({
     type,
     open,
     closeSnackbar,
+    showSnackbar,
   });
 };

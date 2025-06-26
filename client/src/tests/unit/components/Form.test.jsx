@@ -77,3 +77,27 @@ describe("Form Component", () => {
     expect(dateInput.value).toBe("01/19/2025");
   });
 });
+
+it("submits form and shows snackbar", async () => {
+  const showSnackbar = jest.fn();
+  mockSnackbar({ showSnackbar });
+
+  global.fetch = jest.fn(() =>
+    Promise.resolve({
+      text: () => Promise.resolve("Success"),
+    })
+  );
+
+  render(<Form />);
+
+  setAndTestInputFields();
+
+  fireEvent.click(screen.getByText("Add to Job Board"));
+
+  await waitFor(() => {
+    expect(showSnackbar).toHaveBeenCalledWith({
+      message: "Added to Google Sheet",
+      type: "success",
+    });
+  });
+});
