@@ -1,4 +1,5 @@
-# Job Tracker [![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker)
+# Job Tracker [![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker) ![Status](https://img.shields.io/badge/Status-In%20Progress-blueviolet)
+
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
