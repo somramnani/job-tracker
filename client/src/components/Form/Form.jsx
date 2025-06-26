@@ -197,6 +197,7 @@ const Form = () => {
             <DatePicker
               label="Date"
               value={formData.date}
+              date-testid="date"
               onChange={handleDateChange}
               renderInput={(params) => <TextField fullWidth {...params} />}
             />
