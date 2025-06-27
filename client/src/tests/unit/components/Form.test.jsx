@@ -61,11 +61,18 @@ describe("Form Component", () => {
 
     fireEvent.click(screen.getByText("Clear Form"));
 
-    expect(screen.getByLabelText(urlInputLabel).value).toBe("");
-    expect(screen.getByLabelText(jobNameInputLabel).value).toBe("");
-    expect(screen.getByLabelText(companyInputLabel).value).toBe("");
-    expect(screen.getByLabelText(categoryInputLabel).value).toBe("");
-    expect(screen.getByLabelText(pointOfContactInputLabel).value).toBe("");
+    const inputs = [
+      urlInputLabel,
+      jobNameInputLabel,
+      jobNameInputLabel,
+      companyInputLabel,
+      categoryInputLabel,
+      pointOfContactInputLabel,
+    ];
+
+    for (let i = 0; i < inputs.length; i++) {
+      expect(screen.getByLabelText(inputs[i]).value).toBe("");
+    }
   });
 
   it("handles date change", () => {
