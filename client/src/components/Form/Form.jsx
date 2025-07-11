@@ -157,7 +157,7 @@ const Form = () => {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `Date=${formData.date.format("MM/DD/YYYY")}&Link=${formData.url}
-      }&Job=${formData.jobName}&Company=${formData.company}&Category=${
+      &Job=${formData.jobName}&Company=${formData.company}&Category=${
         formData.category
       }&Contact=${formData.pointOfContact}`,
     })
