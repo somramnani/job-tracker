@@ -1,5 +1,15 @@
-# Job Tracker [![Unit Tests](https://github.com/somramnani/job-tracker/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/somramnani/job-tracker/actions/workflows/unit-tests.yml) [![Integration Tests](https://github.com/somramnani/job-tracker/actions/workflows/integration-tests.yml/badge.svg)](https://github.com/somramnani/job-tracker/actions/workflows/integration-tests.yml) [![Playwright Tests](https://github.com/somramnani/job-tracker/actions/workflows/playwright.yml/badge.svg)](https://github.com/somramnani/job-tracker/actions/workflows/playwright.yml) [![codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker) ![Project Status](https://img.shields.io/badge/Status-In%20Progress-blueviolet)
+# Job Tracker 
+[![Unit Tests](https://github.com/somramnani/job-tracker/actions/workflows/unit-tests.yml/badge.svg)](https://github.com/somramnani/job-tracker/actions/workflows/unit-tests.yml) 
+[![Integration Tests](https://github.com/somramnani/job-tracker/actions/workflows/integration-tests.yml/badge.svg)](https://github.com/somramnani/job-tracker/actions/workflows/integration-tests.yml) 
+[![Playwright Tests](https://github.com/somramnani/job-tracker/actions/workflows/playwright.yml/badge.svg)](https://github.com/somramnani/job-tracker/actions/workflows/playwright.yml)
+[![Codecov](https://codecov.io/gh/somramnani/job-tracker/graph/badge.svg?token=MAmPD7gIAD)](https://codecov.io/gh/somramnani/job-tracker) 
+![Project Status](https://img.shields.io/badge/Status-In%20Progress-blueviolet)
 
+
+
+
+
+This project automates job data collection using an Express server. It scrapes job titles and company names from job posting sites, populates a form with the retrieved data, and then exports the entries to an Excel spreadsheet. Perfect for organizing job search efforts or analyzing job market trends.
 
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
@@ -7,10 +17,6 @@
 ![Material UI](https://img.shields.io/badge/MUI-007FFF?style=for-the-badge&logo=mui&logoColor=white)
 ![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
 ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
-
-
-This project automates job data collection using an Express server. It scrapes job titles and company names from job posting sites, populates a form with the retrieved data, and then exports the entries to an Excel spreadsheet. Perfect for organizing job search efforts or analyzing job market trends.
-
 ![Demo](./assets/demo/job-tracker-demo.gif)
 
 ## 📦 Technologies
