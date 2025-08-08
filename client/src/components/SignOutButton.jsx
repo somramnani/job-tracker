@@ -1,10 +1,11 @@
 import Button from "@mui/material/Button";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { useAuth } from "hooks";
+import { useUser, useClerk } from "@clerk/clerk-react";
 import { Link } from "react-router";
 
 const SignOutButton = () => {
-  const { user, handleLogout } = useAuth();
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
   return (
     <Button
@@ -12,7 +13,7 @@ const SignOutButton = () => {
       variant="outlined"
       size="small"
       disableElevation
-      onClick={handleLogout}
+      onClick={() => signOut()}
       component={Link}
       to="/"
       sx={{

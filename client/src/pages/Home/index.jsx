@@ -1,16 +1,15 @@
-import { useAuth } from "hooks";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { Navigate } from "react-router-dom";
 
 const Home = () => {
-  const { user } = useAuth();
-
   return (
     <div data-testid="home-page">
-      {user ? (
+      <SignedIn>
         <Navigate to="/job-board" replace />
-      ) : (
+      </SignedIn>
+      <SignedOut>
         <Navigate to="/auth-page" replace />
-      )}
+      </SignedOut>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import {
   Description,
 } from "@mui/icons-material";
 import SidebarFooterAccount from "./AccountSidebar/SidebarFooterAccount";
-import { useAuth } from "hooks";
+import { useUser, useClerk } from "@clerk/clerk-react";
 import { useMemo, useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
@@ -46,25 +46,28 @@ const NAVIGATION = [
 const Layout = () => {
   const navigate = useNavigate();
   const [isLoadingPage, setIsLoadingPage] = useState(false);
-  const { location } = useLocation();
+  const {location} = useLocation();
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
-  const { user, handleLogout } = useAuth();
+  const userSession = user
+    ? {
+        user: {
+          name: user.fullName ?? user.username ?? user.primaryEmailAddress?.emailAddress ?? "",
+          email: user.primaryEmailAddress?.emailAddress ?? "",
+          image: user.imageUrl ?? "",
+        },
+      }
+    : null;
 
-  const userSession = {
-    user: {
-      name: user?.name,
-      email: user?.email,
-      image: user?.picture,
-    },
-  };
+    const [session, setSession] = useState(userSession);
 
-  const handleSignOut = () => {
-    setSession(null);
-    handleLogout();
-    navigate("/");
-  };
 
-  const [session, setSession] = useState(userSession);
+    const handleSignOut = async () => {
+      setSession(null);
+      await signOut();
+      navigate("/");
+    };
 
   const authentication = useMemo(
     () => ({
@@ -73,7 +76,7 @@ const Layout = () => {
       },
       signOut: handleSignOut,
     }),
-    [handleLogout]
+    [user]
   );
 
   useEffect(() => {

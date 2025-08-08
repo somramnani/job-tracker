@@ -9,10 +9,10 @@ import {
   IconButton,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { useAuth, useSnackbar } from "hooks";
+import { useSnackbar } from "hooks";
+import { useUser, SignInButton } from "@clerk/clerk-react";
 import {
   ErrorMessage,
-  GoogleLoginAuth,
   GoogleSheetsButton,
   FormButton,
 } from "components";
@@ -21,7 +21,7 @@ import axios from "axios";
 import dayjs from "dayjs";
 
 const Form = () => {
-  const { user } = useAuth();
+  const { user } = useUser();
   const { showSnackbar } = useSnackbar();
   const [formData, setFormData] = useState({
     date: dayjs(),
@@ -272,7 +272,9 @@ const Form = () => {
                 <GoogleSheetsButton />
               </>
             ) : (
-              <GoogleLoginAuth />
+              <SignInButton mode="modal" afterSignInUrl="/job-board">
+                <FormButton message="Sign in to continue" icon={<Add />} type="button" />
+              </SignInButton>
             )}
           </Stack>
         </form>

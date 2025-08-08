@@ -4,13 +4,12 @@ import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import Avatar from "@mui/material/Avatar";
 import Divider from "@mui/material/Divider";
-import { useAuth } from "hooks";
+import { useUser, UserButton } from "@clerk/clerk-react";
 import { AccountPopoverFooter, SignOutButton } from "@toolpad/core/Account";
 
 const SidebarFooterAccountPopover = () => {
-  const { user } = useAuth();
+  const { user } = useUser();
   return (
     <Stack direction="column">
       <Typography variant="body2" mx={2} mt={1}>
@@ -26,18 +25,14 @@ const SidebarFooterAccountPopover = () => {
           }}
         >
           <ListItemIcon>
-            <Avatar
-              sx={{
-                width: 32,
-                height: 32,
-                fontSize: "0.95rem",
-                bgcolor: "8B4513",
+            <UserButton
+              afterSignOutUrl="/auth-page"
+              appearance={{
+                elements: {
+                  userButtonAvatarBox: { width: 32, height: 32 },
+                },
               }}
-              src={user?.picture ?? ""}
-              alt={user?.given_name ?? ""}
-            >
-              {user.name}
-            </Avatar>
+            />
           </ListItemIcon>
           <ListItemText
             sx={{
@@ -46,8 +41,8 @@ const SidebarFooterAccountPopover = () => {
               alignItems: "flex-start",
               width: "100%",
             }}
-            primary={user.given_name}
-            secondary={user.email}
+            primary={user?.fullName ?? user?.username ?? ""}
+            secondary={user?.primaryEmailAddress?.emailAddress ?? ""}
             primaryTypographyProps={{ variant: "body2" }}
             secondaryTypographyProps={{ variant: "caption" }}
           />
@@ -55,6 +50,7 @@ const SidebarFooterAccountPopover = () => {
       </MenuList>
       <Divider />
       <AccountPopoverFooter>
+    
         <SignOutButton />
       </AccountPopoverFooter>
     </Stack>

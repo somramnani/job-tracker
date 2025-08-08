@@ -1,6 +1,8 @@
 import "App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
+import { Navigate } from "react-router-dom";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
 import { TitleWrapper } from "components";
 import {
   Home,
@@ -56,7 +58,19 @@ function App() {
               </TitleWrapper>
             }
           />
-          <Route element={<DashBoardLayout />}>
+      
+          <Route
+            element={
+              <>
+                <SignedIn>
+                  <DashBoardLayout />
+                </SignedIn>
+                <SignedOut>
+                  <Navigate to="/auth-page" replace />
+                </SignedOut>
+              </>
+            }
+          >
             {routes.map((route, index) => (
               <Route
                 key={index}

@@ -1,14 +1,11 @@
-import { useState } from "react";
+/* eslint-disable */
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import { AppTheme, ColorModeSelect } from "templates/shared-theme";
-import { SignIn, Content, SignUp } from "pages/AuthPage/components";
-import { Box, Zoom } from "@mui/material";
-import { TransitionGroup } from "react-transition-group";
+import { Content } from "pages/AuthPage/components";
+import { SignIn } from "@clerk/clerk-react";
 
 const AuthPage = (props) => {
-  const [showSignUp, setShowSignUp] = useState(false);
-
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
@@ -60,22 +57,7 @@ const AuthPage = (props) => {
             }}
           >
             <Content />
-
-            <TransitionGroup>
-              {showSignUp ? (
-                <Zoom key="signup" timeout={300}>
-                  <Box>
-                    <SignUp onSignInClick={() => setShowSignUp(false)} />
-                  </Box>
-                </Zoom>
-              ) : (
-                <Zoom key="signin" timeout={300}>
-                  <Box>
-                    <SignIn onSignUpClick={() => setShowSignUp(true)} />
-                  </Box>
-                </Zoom>
-              )}
-            </TransitionGroup>
+            <SignIn signInFallbackRedirectUrl="/job-board" />
           </Stack>
         </Stack>
       </Stack>
