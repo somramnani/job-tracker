@@ -1,45 +1,52 @@
 import { screen } from "@testing-library/react";
 import { Navbar } from "components";
-import { mockAuth, mockSnackbar } from "tests/utils/mockHooks";
 import { render } from "tests/utils/customRender";
 
-jest.mock("hooks", () => ({
-  useAuth: jest.fn(),
-  useSnackbar: jest.fn(),
-}));
+jest.mock("@clerk/clerk-react", () => {
+  const React = require("react");
+  const api = {
+    useUser: jest.fn(),
+    useClerk: () => ({ signOut: jest.fn() }),
+    SignedIn: ({ children }) => {
+      const { isSignedIn } = api.useUser();
+      return isSignedIn ? <>{children}</> : null;
+    },
+    SignedOut: ({ children }) => {
+      const { isSignedIn } = api.useUser();
+      return isSignedIn ? null : <>{children}</>;
+    },
+    UserButton: () => <button>Account</button>,
+  };
+  return api;
+});
+
+const { useUser } = require("@clerk/clerk-react");
 
 describe("Navbar Component", () => {
-  beforeEach(() => {
-    mockAuth({
-      user: null,
-      handleLogout: jest.fn(),
-    });
-
-    mockSnackbar({
-      message: "",
-      type: "info",
-      open: false,
-      closeSnackbar: jest.fn(),
-    });
+  it("renders", () => {
+    useUser.mockReturnValue({ isSignedIn: false, user: null });
+    render(<Navbar />);
+    expect(screen.getByTestId("navbar")).toBeInTheDocument();
   });
 
-  it("should render the Navbar component onto the screen", () => {
+  it("shows Login when signed out", () => {
+    useUser.mockReturnValue({ isSignedIn: false, user: null });
     render(<Navbar />);
-
-    const navbar = screen.getByTestId("navbar");
-    expect(navbar).toBeInTheDocument();
+    expect(screen.getByText("Login")).toBeInTheDocument();
   });
 
-  it("should render a Logout button when a user is logged in", () => {
-    const mockUser = { id: "1", name: "Som", email: "test@gmail.com" };
-    mockAuth(mockUser);
-
+  it("hides Login and shows account/menu when signed in", () => {
+    useUser.mockReturnValue({
+      isSignedIn: true,
+      user: {
+        fullName: "Som",
+        primaryEmailAddress: { emailAddress: "som@example.com" },
+      },
+    });
     render(<Navbar />);
-
-    const logoutButton = screen.getByText("Logout");
-    expect(logoutButton).toBeInTheDocument();
-
-    const loginButton = screen.queryByText("Login");
-    expect(loginButton).not.toBeInTheDocument();
+    expect(screen.queryByText("Login")).not.toBeInTheDocument();
+    // Either check nav item or mocked UserButton
+    expect(screen.getByText("Job Board")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /account/i })).toBeInTheDocument();
   });
 });

@@ -1,20 +1,33 @@
 import { screen, fireEvent, waitFor } from "@testing-library/react";
 import { Form } from "components";
 import { render } from "tests/utils/customRender";
-import { mockAuth, mockSnackbar } from "tests/utils/mockHooks";
+
+
+jest.mock("@clerk/clerk-react", () => ({
+  useUser: jest.fn(),
+  SignInButton: ({ children }) => <>{children}</>,
+}));
+const { useUser } = require("@clerk/clerk-react");
 
 jest.mock("hooks", () => ({
-  useAuth: jest.fn(),
   useSnackbar: jest.fn(),
 }));
 
+jest.mock("axios", () => ({
+  get: jest.fn().mockResolvedValue({
+    data: { jobTitle: "", companyName: "" },
+  }),
+}));
+
+import { mockSnackbar } from "tests/utils/mockHooks";
+
 beforeEach(() => {
   jest.clearAllMocks();
-
-  mockAuth({
-    user: { id: "1", name: "Som", email: "som@gmail.com" },
-    handleLogout: jest.fn(),
+  useUser.mockReturnValue({
+    isSignedIn: true,
+    user: { firstName: "Som" },
   });
+
   mockSnackbar({
     message: "",
     type: "info",
@@ -22,6 +35,10 @@ beforeEach(() => {
     closeSnackbar: jest.fn(),
     showSnackbar: jest.fn(),
   });
+
+  global.fetch = jest.fn(() =>
+    Promise.resolve({ text: () => Promise.resolve("Success") })
+  );
 });
 
 const urlInputLabel = /URL Link/i;
