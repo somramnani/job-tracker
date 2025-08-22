@@ -1,4 +1,3 @@
-/* eslint-disable */
 import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import { AppTheme, ColorModeSelect } from "templates/shared-theme";
