@@ -49,7 +49,7 @@ function App() {
             }
           />
           <Route
-            path="/auth-page"
+            path="/auth"
             element={
               <TitleWrapper title="Job Tracker | log in or sign up">
                 <AuthPage />
