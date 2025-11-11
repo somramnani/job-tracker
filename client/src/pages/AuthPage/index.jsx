@@ -2,9 +2,33 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Stack from "@mui/material/Stack";
 import { AppTheme, ColorModeSelect } from "templates/shared-theme";
 import { Content } from "pages/AuthPage/components";
-import { SignIn } from "@clerk/clerk-react";
+import { SignIn, useAuth } from "@clerk/clerk-react";
 
 const AuthPage = (props) => {
+  // const { isSignedIn, user } = useAuth();
+
+  const saveUser = async (event) => {
+    const { user } = event;
+    if (!user) return;
+
+    console.log("Sign in", user);
+
+    try {
+      const res = await fetch(
+        `${process.env.REACT_APP_SERVER_URL}/api/save-user`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+
+      const data = await res.json();
+      console.log("User saved:", data);
+    } catch (err) {
+      console.error("Failed to save user:", err);
+    }
+  };
+
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
@@ -56,7 +80,10 @@ const AuthPage = (props) => {
             }}
           >
             <Content />
-            <SignIn signInFallbackRedirectUrl="/job-board" />
+            <SignIn
+              onSignIn={saveUser}
+              signInFallbackRedirectUrl="/job-board"
+            />
           </Stack>
         </Stack>
       </Stack>
