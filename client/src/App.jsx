@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
 import { Navigate } from "react-router-dom";
 import { SignedIn, SignedOut } from "@clerk/clerk-react";
-import { TitleWrapper } from "components";
+import { ClerkUserSync, TitleWrapper } from "components";
 import {
   Home,
   JobBoard,
@@ -40,6 +40,7 @@ const routes = [
 function App() {
   return (
     <div className="App" data-testid="app">
+      <ClerkUserSync />
       <Router>
         <Routes>
           <Route

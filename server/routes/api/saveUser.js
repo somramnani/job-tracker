@@ -1,23 +1,39 @@
 const express = require("express");
-const { requireAuth } = require("@clerk/express");
+const { clerkClient, getAuth } = require("@clerk/express");
 const prisma = require("../../utils/prismaClient");
 
 const router = express.Router();
 
-router.post("/", requireAuth(), async (req, res) => {
+router.post("/", async (req, res) => {
   try {
-    const { userId, emailAddresses, firstName, lastName } = req.auth.user;
+    const { isAuthenticated, userId } = getAuth(req);
 
-    const name = `${firstName || ""} ${lastName || ""}`.trim();
-    const email = emailAddresses[0].emailAddress;
+    if (!isAuthenticated || !userId) {
+      return res.status(401).json({ error: "User not authenticated" });
+    }
 
-    await prisma.user.upsert({
+    const clerkUser = await clerkClient.users.getUser(userId);
+    const primaryEmail =
+      clerkUser.primaryEmailAddress?.emailAddress ||
+      clerkUser.emailAddresses?.[0]?.emailAddress;
+
+    if (!primaryEmail) {
+      return res.status(400).json({ error: "User email is required" });
+    }
+
+    const name =
+      clerkUser.fullName ||
+      `${clerkUser.firstName || ""} ${clerkUser.lastName || ""}`.trim() ||
+      clerkUser.username ||
+      primaryEmail;
+
+    const user = await prisma.user.upsert({
       where: { clerkId: userId },
-      update: { name, email },
-      create: { clerkId: userId, name, email },
+      update: { name, email: primaryEmail },
+      create: { clerkId: userId, name, email: primaryEmail },
     });
 
-    res.json({ success: true });
+    res.json({ success: true, user });
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: "Database error" });

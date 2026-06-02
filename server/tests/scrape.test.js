@@ -3,6 +3,9 @@ const axios = require("axios");
 const app = require("../server");
 
 jest.mock("axios");
+jest.mock("@clerk/express", () => ({
+  clerkMiddleware: () => (req, res, next) => next(),
+}));
 
 describe("GET /* scrape route", () => {
   test("returns 400 if no URL is provided", async () => {

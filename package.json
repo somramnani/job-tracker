@@ -15,7 +15,10 @@
     "client-test-e2e": "npm run test:e2e --prefix client",
     "client-test": "npm run test --prefix client --coverage",
     "client-test:unit-test": "npm run test:unit-test --prefix client ",
-    "dev": "concurrently \"npm run client\" \"npm run server\""
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "install:server": "npm install --prefix server",
+    "install:client": "npm install --prefix client",
+    "install:client-server": "npm run install:server && npm run install:client"
   },
   "author": "",
   "license": "ISC",
