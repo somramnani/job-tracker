@@ -1,7 +1,9 @@
 import "App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router";
-import { TitleWrapper } from "components";
+import { Navigate } from "react-router-dom";
+import { SignedIn, SignedOut } from "@clerk/clerk-react";
+import { ClerkUserSync, TitleWrapper } from "components";
 import {
   Home,
   JobBoard,
@@ -38,6 +40,7 @@ const routes = [
 function App() {
   return (
     <div className="App" data-testid="app">
+      <ClerkUserSync />
       <Router>
         <Routes>
           <Route
@@ -56,7 +59,19 @@ function App() {
               </TitleWrapper>
             }
           />
-          <Route element={<DashBoardLayout />}>
+      
+          <Route
+            element={
+              <>
+                <SignedIn>
+                  <DashBoardLayout />
+                </SignedIn>
+                <SignedOut>
+                  <Navigate to="/auth-page" replace />
+                </SignedOut>
+              </>
+            }
+          >
             {routes.map((route, index) => (
               <Route
                 key={index}

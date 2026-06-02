@@ -1,11 +1,9 @@
 import { AppBar, Toolbar } from "@mui/material";
 import { Logo, NavbarItems, NavbarButton } from "./navbarStyles";
 import { Link } from "react-router";
-import { useAuth } from "hooks";
+import { SignedIn, SignedOut, UserButton } from "@clerk/clerk-react";
 
 const Navbar = () => {
-  const { user, handleLogout } = useAuth();
-
   const navItems = [
     { title: "Job Board", link: "/job-board" },
     { title: "Overview", link: "/overview" },
@@ -41,22 +39,21 @@ const Navbar = () => {
           </Logo>
 
           <NavbarItems>
-            {user ? (
+            <SignedIn>
               <div>
                 {navItems.map((item, index) => (
                   <NavbarButton key={index} component={Link} to={item.link}>
                     {item.title}
                   </NavbarButton>
                 ))}
-                <NavbarButton component={Link} to="/" onClick={handleLogout}>
-                  Logout
-                </NavbarButton>
+                <UserButton afterSignOutUrl="/" />
               </div>
-            ) : (
-              <NavbarButton component={Link} to="/">
+            </SignedIn>
+            <SignedOut>
+              <NavbarButton component={Link} to="/auth-page">
                 Login
               </NavbarButton>
-            )}
+            </SignedOut>
           </NavbarItems>
         </Toolbar>
       </AppBar>

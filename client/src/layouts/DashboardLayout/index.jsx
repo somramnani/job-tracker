@@ -8,8 +8,8 @@ import {
   Description,
 } from "@mui/icons-material";
 import SidebarFooterAccount from "./AccountSidebar/SidebarFooterAccount";
-import { useAuth } from "hooks";
-import { useMemo, useState, useEffect } from "react";
+import { useUser, useClerk } from "@clerk/clerk-react";
+import { useCallback, useMemo, useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router";
 import { CircularProgress, Box } from "@mui/material";
@@ -46,25 +46,39 @@ const NAVIGATION = [
 const Layout = () => {
   const navigate = useNavigate();
   const [isLoadingPage, setIsLoadingPage] = useState(false);
-  const { location } = useLocation();
+  const location = useLocation();
+  const { user } = useUser();
+  const { signOut } = useClerk();
 
-  const { user, handleLogout } = useAuth();
-
-  const userSession = {
-    user: {
-      name: user?.name,
-      email: user?.email,
-      image: user?.picture,
-    },
-  };
-
-  const handleSignOut = () => {
-    setSession(null);
-    handleLogout();
-    navigate("/");
-  };
+  const userSession = useMemo(
+    () =>
+      user
+        ? {
+            user: {
+              name:
+                user.fullName ??
+                user.username ??
+                user.primaryEmailAddress?.emailAddress ??
+                "",
+              email: user.primaryEmailAddress?.emailAddress ?? "",
+              image: user.imageUrl ?? "",
+            },
+          }
+        : null,
+    [user]
+  );
 
   const [session, setSession] = useState(userSession);
+
+  useEffect(() => {
+    setSession(userSession);
+  }, [userSession]);
+
+  const handleSignOut = useCallback(async () => {
+    setSession(null);
+    await signOut();
+    navigate("/");
+  }, [navigate, signOut]);
 
   const authentication = useMemo(
     () => ({
@@ -73,7 +87,7 @@ const Layout = () => {
       },
       signOut: handleSignOut,
     }),
-    [handleLogout]
+    [handleSignOut, userSession]
   );
 
   useEffect(() => {
